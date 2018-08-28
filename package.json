@@ -1,0 +1,30 @@
+{
+  "name": "bs-fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bs-blog/fe-nextjs.git"
+  },
+  "keywords": [
+    "nextjs"
+  ],
+  "author": "steven,peter\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D \u001b[D\u001b[D\u001b[C\u001b[Cpeter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bs-blog/fe-nextjs/issues"
+  },
+  "homepage": "https://github.com/bs-blog/fe-nextjs#readme",
+  "dependencies": {
+    "next": "^6.1.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
