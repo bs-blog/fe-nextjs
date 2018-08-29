@@ -1,1 +1,3 @@
-export default () => <div>Welcome to next.js!</div>
+import css from './index.css'
+
+export default () => <div className={css.example}>Hello World!</div>
