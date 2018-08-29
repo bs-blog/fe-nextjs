@@ -16,15 +16,21 @@
   "keywords": [
     "nextjs"
   ],
-  "author": "steven,peter\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D \u001b[D\u001b[D\u001b[C\u001b[Cpeter",
+  "author": "steven,peter",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bs-blog/fe-nextjs/issues"
   },
   "homepage": "https://github.com/bs-blog/fe-nextjs#readme",
   "dependencies": {
+    "@zeit/next-css": "^0.2.0",
+    "@zeit/next-stylus": "^0.1.0",
     "next": "^6.1.1",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "stylus": "^0.54.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.3"
   }
 }
