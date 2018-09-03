@@ -1,3 +1,5 @@
+
+const pagesRoutes = require('./server/routes/pages');
 const withCSS = require('@zeit/next-css')
 module.exports = withCSS({
   cssModules: true,
@@ -7,6 +9,7 @@ module.exports = withCSS({
   },
   serverRuntimeConfig: {
     // Will only be available on the server side
-    mySecret: require('./src/api')
-  }
+    ...require('./server/services')
+  },
+  exportPathMap: pagesRoutes
 })

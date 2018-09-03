@@ -9,14 +9,13 @@ const { Header, Content, Sider } = Layout
 
 export default class App extends React.Component {
   static async getInitialProps({ req }) {
-    const initialProps = await Promise.resolve(serverRuntimeConfig.mySecret)
+    const initialProps = await Promise.resolve(serverRuntimeConfig.test)
     return { ...initialProps }
   }
 
   render() {
     return (
       <Layout>
-        {console.log(this.props)}
         <Header>
           <div className="logo" />
           <Menu
