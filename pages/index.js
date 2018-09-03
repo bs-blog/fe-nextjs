@@ -1,4 +1,4 @@
-import css from './index.css'
+// import css from './index.css'
 import * as React from 'react'
 import getConfig from 'next/config'
 
