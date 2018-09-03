@@ -4,7 +4,7 @@ import css from './index.css'
 
 import getConfig from 'next/config'
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Sider, Content } = Layout
 
 export default class App extends React.Component {
   static async getInitialProps({ req }) {
@@ -13,7 +13,7 @@ export default class App extends React.Component {
     return { storyList }
   }
   render() {
-    const {storyList} = this.props
+    const { storyList } = this.props
     return (
       <Layout>
         <Sider>Sider</Sider>
@@ -22,15 +22,15 @@ export default class App extends React.Component {
           <Content className={css.layoutContentWrapper}>
             <h1>Content</h1>
 
-            {
-              storyList.map((item, index) => {
-                const {author, name} = item
-                return (<p>
+            {storyList.map((item, index) => {
+              const { author, name } = item
+              return (
+                <p>
                   <div>author: {author}</div>
                   <div>name:: {name}</div>
-                </p>)
-              })
-            }
+                </p>
+              )
+            })}
           </Content>
           <Footer>Footer</Footer>
         </Layout>
