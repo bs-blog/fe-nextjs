@@ -8,7 +8,7 @@ module.exports = withCSS({
   },
   serverRuntimeConfig: {
     // Will only be available on the server side
-    ...require('./srcservices')
+    ...require('./src/services')
   },
   exportPathMap: pagesRoutes
 })

@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://github.com/bs-blog/fe-nextjs#readme",
   "scripts": {
     "precommit": "lint-staged",
     "prettier": "prettier  --no-semi --single-quote --write 'pages/**/*.js' 'src/**/*.js'",
     "lint": "node_modules/.bin/eslint 'pages/**/*.js' 'src/**/*.js' ",
     "lint-fix": "node_modules/.bin/eslint src/ --fix",
     "dev": "node src/server.js ",
-    "build": "next build",
-    "start": "NODE_ENV=production node src/server.js ",
-    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+    "build": "NODE_ENV=production next build",
+    "start": "NODE_ENV=production node src/server.js",
+    "test": "echo fake test",
+    "deploy": "npm run build ; gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -25,13 +27,13 @@
   "bugs": {
     "url": "https://github.com/bs-blog/fe-nextjs/issues"
   },
-  "homepage": "https://github.com/bs-blog/fe-nextjs#readme",
   "dependencies": {
     "@zeit/next-css": "^0.2.0",
     "antd": "^3.8.4",
     "express": "^4.16.3",
     "firebase": "^5.4.2",
     "firebase-admin": "^6.0.0",
+    "gh-pages": "^1.2.0",
     "next": "^6.1.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
