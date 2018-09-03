@@ -9,7 +9,7 @@ module.exports = withCSS({
   },
   serverRuntimeConfig: {
     // Will only be available on the server side
-    mySecret: require('./src/api')
+    ...require('./server/services')
   },
   exportPathMap: pagesRoutes
 })
