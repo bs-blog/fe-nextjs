@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://bs-blog.github.io/fe-nextjs/",
   "scripts": {
     "precommit": "lint-staged",
     "prettier": "prettier  --no-semi --single-quote --write 'pages/**/*.js' 'src/**/*.js'",
