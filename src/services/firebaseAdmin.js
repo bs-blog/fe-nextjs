@@ -1,5 +1,5 @@
-const { database } = require('../../lib/firebaseAdmin')
-const ClassDaoStorys = require('../../lib/dao/StoryList')
+const { database } = require('../lib/firebaseAdmin')
+const ClassDaoStorys = require('../lib/dao/StoryList')
 
 const addCat = () => {
   console.log(' -=-=-=-= addCat')
