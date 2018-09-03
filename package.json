@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "precommit": "lint-staged",
-    "prettier": "prettier  --no-semi --single-quote --write '**/**/*.js'",
+    "prettier": "prettier  --no-semi --single-quote --write 'pages/**/*.js' 'src/**/*.js'",
     "lint": "node_modules/.bin/eslint 'pages/**/*.js' 'src/**/*.js' ",
     "lint-fix": "node_modules/.bin/eslint src/ --fix",
     "dev": "node src/server.js ",
@@ -53,6 +53,11 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json}": [
+      "npm run prettier",
+      "npm run lint-fix",
+      "git add"
+    ],
+    "pages/**/*.{js,jsx,json}": [
       "npm run prettier",
       "npm run lint-fix",
       "git add"
