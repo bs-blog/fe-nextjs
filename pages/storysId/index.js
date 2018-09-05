@@ -3,7 +3,7 @@ import { Layout } from 'antd'
 import css from './index.css'
 
 import getConfig from 'next/config'
-import StoryListCard from '../../components/storysList/StoryListCard'
+import StoryListCard from '../../src/components/storysList/StoryListCard'
 
 const { Header, Footer, Sider, Content } = Layout
 
