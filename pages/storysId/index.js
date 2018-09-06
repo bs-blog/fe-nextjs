@@ -3,7 +3,7 @@ import { Layout } from 'antd'
 import css from './index.css'
 
 import getConfig from 'next/config'
-import List from '../../src/components/storysList/List'
+import StoryListCard from '../../src/components/storysList/StoryListCard'
 
 const { Header, Footer, Sider, Content } = Layout
 
@@ -23,7 +23,7 @@ export default class App extends React.Component {
           <Content className={css.layoutContentWrapper}>
             <h1>Content</h1>
 
-            <List {...this.props} />
+            <StoryListCard {...this.props} />
           </Content>
           <Footer>Footer</Footer>
         </Layout>
