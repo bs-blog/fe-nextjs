@@ -18,7 +18,7 @@ module.exports = class Categorys extends Base {
     else this.ref = this.database.ref('Storys/')
   }
 
-  async onceFunction(cb) {
+  async onceFunction() {
     const result = await this.ref.once('value')
     this.data = result.val()
     return super.onceFunction()

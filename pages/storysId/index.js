@@ -3,18 +3,21 @@ import { Layout } from 'antd'
 import css from './index.css'
 
 import getConfig from 'next/config'
-import StoryListCard from '../../src/components/storysList/StoryListCard'
+import Card from '../../src/components/storysList/Card'
 
 const { Header, Footer, Sider, Content } = Layout
 
-export default class App extends React.Component {
+export default class StoryId extends React.Component {
   static async getInitialProps({ req }) {
+    const storyId = req.paramLast
+
     const { serverRuntimeConfig } = getConfig()
-    const storyList = await Promise.resolve(serverRuntimeConfig.firebaseAdmin.fetchStoryList())
-    return { storyList }
+    const story = await Promise.resolve(serverRuntimeConfig.firebaseAdmin.fetchStoryById(storyId))
+
+    return { story }
   }
   render() {
-    const { storyList } = this.props
+    const { story } = this.props
     return (
       <Layout>
         <Sider>Sider</Sider>
@@ -23,7 +26,7 @@ export default class App extends React.Component {
           <Content className={css.layoutContentWrapper}>
             <h1>Content</h1>
 
-            <StoryListCard {...this.props} />
+            <div dangerouslySetInnerHTML={{ __html: story.html }} />
           </Content>
           <Footer>Footer</Footer>
         </Layout>

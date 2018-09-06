@@ -34,13 +34,13 @@ module.exports = class Base {
 
   // fetch data just once -=-=--=-=-=-=-=-=-=--=-=-=-=-=
 
-  onceFunction() {
+  onceFunction(para) {
     this.data = this.normalize(this.data)
     return this.data
   }
 
-  once() {
-    return this.onceFunction()
+  once(para) {
+    return this.onceFunction(para)
   }
 
   // update -=-=--=-=-=-=-=-=-=--=-=-=-=-=
