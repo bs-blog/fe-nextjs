@@ -1,5 +1,6 @@
 const { database } = require('../lib/firebaseAdmin')
 const ClassDaoStorys = require('../lib/dao/StoryList')
+const ClassDaoStoryId = require('../lib/dao/StoryId')
 
 const addCat = () => {
   console.log(' -=-=-=-= addCat')
@@ -20,7 +21,13 @@ const fetchStoryList = () => {
   return dao.once()
 }
 
+const fetchStoryById = id => {
+  const dao = new ClassDaoStoryId(database)
+  return dao.once(id)
+}
+
 module.exports = {
   addCat,
-  fetchStoryList
+  fetchStoryList,
+  fetchStoryById
 }

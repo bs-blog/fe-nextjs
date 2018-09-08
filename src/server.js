@@ -22,6 +22,11 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true)
     const { pathname, query = {} } = parsedUrl
     const route = routes[pathname]
+
+    // getInitialProps need to get /page/:id
+    const paramLast = req.url.split('/').slice(-1)[0] || null
+    req.paramLast = paramLast
+
     if (route) {
       return app.render(req, res, route.page, query)
     }

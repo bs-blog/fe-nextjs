@@ -16,7 +16,7 @@ export default class App extends React.Component {
     const bgImageStyle = { backgroundImage: `url(${coverUrl})` }
 
     return (
-      <div>
+      <a href={`/storys/${id}`}>
         <Card
           style={{ marginTop: 16 }}
           cover={<div alt="example" className={css.storyCardCover} style={bgImageStyle} />}
@@ -32,7 +32,7 @@ export default class App extends React.Component {
             />
           </Skeleton>
         </Card>
-      </div>
+      </a>
     )
   }
 }
