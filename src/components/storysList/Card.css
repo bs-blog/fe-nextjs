@@ -1,6 +1,26 @@
 .storyCardCover {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   height: 300px;
+}
+
+.storyCardCoverOverlay {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cardSkeleton {
+  position: relative;
+}
+
+.cardMeta  {
+  width: 100%;
+  position: absolute;
+  color: white;
+  bottom: 0px;
+}
+
+.createdTime {
+  float: right;
 }

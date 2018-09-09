@@ -3,7 +3,7 @@ import { Layout } from 'antd'
 import css from './Basic.css'
 import Drawer from './Drawer'
 
-const { Header, Footer, Sider, Content } = Layout
+const { Header, Footer, Content } = Layout
 
 export default class App extends React.Component {
   render() {
