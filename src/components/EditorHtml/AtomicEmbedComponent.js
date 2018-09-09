@@ -1,10 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
-
-const EmbededVideoBlock = styled.div`
-  text-align: center;
-`
+import Css from './AtomicEmbedComponent.css'
 
 const getInnerHtml = url => {
   if (url.indexOf('<iframe') !== -1) {
@@ -41,9 +37,9 @@ export default class AtomicEmbedComponent extends React.Component {
     const { url } = this.props.data
     const innerHTML = getInnerHtml(url)
     return (
-      <EmbededVideoBlock>
+      <div className={Css.embededVideoBlock}>
         <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
-      </EmbededVideoBlock>
+      </div>
     )
   }
 }
