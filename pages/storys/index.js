@@ -1,11 +1,9 @@
 import * as React from 'react'
-import { Layout } from 'antd'
+import BasicLayout from '../Layout/Basic'
 import css from './index.css'
 
 import getConfig from 'next/config'
 import List from '../../src/components/storysList/List'
-
-const { Header, Footer, Sider, Content } = Layout
 
 export default class App extends React.Component {
   static async getInitialProps({ req }) {
@@ -16,18 +14,10 @@ export default class App extends React.Component {
   render() {
     const { storyList } = this.props
     return (
-      <Layout>
-        <Sider>Sider</Sider>
-        <Layout>
-          <Header>Header</Header>
-          <Content className={css.layoutContentWrapper}>
-            <h1>Content</h1>
-
-            <List {...this.props} />
-          </Content>
-          <Footer>Footer</Footer>
-        </Layout>
-      </Layout>
+      <BasicLayout>
+        <h1>Content</h1>
+        <List {...this.props} />
+      </BasicLayout>
     )
   }
 }

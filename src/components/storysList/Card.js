@@ -1,15 +1,14 @@
 import * as React from 'react'
-import { Skeleton, Switch, Card, Icon, Avatar } from 'antd'
+import { Skeleton, Card, Avatar } from 'antd'
 import css from './Card.css'
 import { timestampToDateFormat } from '../../lib/time'
 
-// const { Header, Footer, Sider, Content } = Layout;
 const { Meta } = Card
 
 export default class App extends React.Component {
   render() {
     const { story } = this.props
-    const { author, createdAt, id, title, coverUrl } = story
+    const { createdAt, id, title, coverUrl } = story
 
     const loading = story ? false : true
 

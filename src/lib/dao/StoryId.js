@@ -1,5 +1,4 @@
 const Base = require('./Base.js')
-const { stateToHTML } = require('draft-js-export-html')
 const DraftJS = require('draft-js')
 
 const storyParser = item => {
@@ -7,15 +6,11 @@ const storyParser = item => {
   const name = item.title
 
   const contentState = DraftJS.convertFromRaw(rawContent)
-  const html = stateToHTML(contentState)
-
-  // console.log('rawContent: ', rawContent)
 
   return {
     ...item,
     name,
-    rawContent,
-    html
+    rawContent
   }
 }
 
