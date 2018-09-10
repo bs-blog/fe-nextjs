@@ -30,7 +30,9 @@ export default class App extends React.Component {
     const loading = story ? false : true
 
     const bgImageStyle = {
-      backgroundImage: `url(${coverUrl})`
+      backgroundImage: `url(${coverUrl})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover'
     }
 
     return (
