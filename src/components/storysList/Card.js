@@ -23,7 +23,7 @@ const StoryCard = (title, bgImageStyle, createdAt, loading) => {
 
 export default class App extends React.Component {
   render() {
-    const { story } = this.props
+    const { story, height } = this.props
 
     const { createdAt, id, title, coverUrl } = story
 
@@ -32,13 +32,13 @@ export default class App extends React.Component {
     const bgImageStyle = {
       backgroundImage: `url(${coverUrl})`,
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      height
     }
 
     return (
       <a href={`/storys/${id}`}>
         <Card
-          style={{ marginTop: 16 }}
           cover={StoryCard(title, bgImageStyle, createdAt, loading)}
           bordered={false}
           hoverable
