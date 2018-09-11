@@ -1,7 +1,10 @@
 const { database } = require('../lib/firebaseAdmin')
 const ClassDaoStorys = require('../lib/dao/StoryList')
 const ClassDaoStoryId = require('../lib/dao/StoryId')
+const ClassDaoCategorys = require('../lib/dao/CategoryList')
+const ClassDaoAuthors = require('../lib/dao/AuthorList')
 
+// -=-=--=-=-= storys -=-=-=-=-=-=
 const fetchStoryList = () => {
   const ref = database
     .ref('Storys/')
@@ -17,7 +20,21 @@ const fetchStoryById = id => {
   return dao.once(id)
 }
 
+// -=-=--=-=-= category -=-=-=-=-=-=
+const fetchCategoryList = () => {
+  const dao = new ClassDaoCategorys(database)
+  return dao.once()
+}
+
+// -=-=--=-=-= author -=-=-=-=-=-=
+const fetchAuthorList = () => {
+  const dao = new ClassDaoAuthors(database)
+  return dao.once()
+}
+
 module.exports = {
   fetchStoryList,
-  fetchStoryById
+  fetchStoryById,
+  fetchCategoryList,
+  fetchAuthorList
 }

@@ -26,6 +26,12 @@ module.exports = class Categorys extends Base {
 
   normalize(result) {
     const list = this.fbListToArray(result)
-    return list.map(item => storyParser(item))
+    return list.map(item => {
+      const parsedList = storyParser(item)
+      return {
+        ...parsedList,
+        categorys: this.fbListToArray(parsedList.categorys)
+      }
+    })
   }
 }
