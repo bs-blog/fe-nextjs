@@ -10,9 +10,16 @@ const gridConfig = {
   default: { xs: 24, sm: 12, md: 6, lg: 4, xl: 4 }
 }
 
+const heightConfig = {
+  0: 400,
+  1: 400,
+  default: 200
+}
+
 export default class List extends React.Component {
   render() {
     const { storyList } = this.props
+    const length = storyList.length
     return (
       <div>
         <Row type="flex" justify="start">
@@ -20,7 +27,7 @@ export default class List extends React.Component {
             const config = gridConfig[index] || gridConfig['default']
             return (
               <Col {...config} key={index}>
-                <Card story={item} />
+                <Card story={item} height={heightConfig[index] || heightConfig['default']} />
               </Col>
             )
           })}
