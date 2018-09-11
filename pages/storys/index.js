@@ -30,7 +30,7 @@ export default class App extends React.Component {
   render() {
     const { storyList } = this.props
     return (
-      <BasicLayout>
+      <BasicLayout {...this.props}>
         <h1>Content</h1>
         <List {...this.props} />
       </BasicLayout>

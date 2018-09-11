@@ -1,0 +1,20 @@
+.topNavWarpper {
+  text-align: center;
+  line-height: 40px;
+  font-size: 12px;
+}
+
+.topNavWarpper a {
+  color: lightgray;
+}
+
+.topNavItem {
+  height: 100%;
+  display: inline-block;
+  margin: 0px 10px;
+  padding: 0 20px;
+}
+.topNavItem:hover { 
+  background-color: lightgray;
+  color: #202226;
+}
