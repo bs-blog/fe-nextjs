@@ -1,3 +1,7 @@
 .layoutContentWrapper {
   min-height: 100vh;
 }
+
+.headerWrapper {
+  background: #202226;
+}
