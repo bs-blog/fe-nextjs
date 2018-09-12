@@ -1,7 +1,7 @@
 // import css from './index.css'
 import * as React from 'react'
 
-import { header, Layout, Menu, Breadcrumb, Icon } from 'antd'
+import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 const { SubMenu } = Menu
 const { Header, Content, Sider } = Layout
 
