@@ -7,7 +7,7 @@ import 'isomorphic-unfetch'
 export default class StoryId extends React.Component {
   static async getInitialProps({ req }) {
     const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
-    const storyId = req.paramLast
+    const { id: storyId } = req.params
 
     const result = await Promise.all([
       fetch(`${baseUrl}/api/storys/${storyId}`).then(res => res.json())
