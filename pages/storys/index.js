@@ -10,7 +10,7 @@ export default class App extends React.Component {
     const { storyList } = this.props
     return (
       <BasicLayout {...this.props}>
-        <h1>Content</h1>
+        {/* <h1>Content</h1> */}
         <List {...this.props} />
       </BasicLayout>
     )
