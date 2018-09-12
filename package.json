@@ -7,7 +7,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "prettier": "prettier  --no-semi --single-quote --write '**/*.js' ",
-    "lint": "node_modules/.bin/eslint 'pages/**/*.js' 'src/**/*.js' ",
+    "lint": "node_modules/.bin/eslint '**/*.{js,jsx}' ",
     "lint-fix": "node_modules/.bin/eslint src/ --fix",
     "dev": "nodemon --watch server.js --watch src/routes  --watch src/services server.js ",
     "build": "NODE_ENV=production next build",

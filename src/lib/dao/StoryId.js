@@ -1,11 +1,8 @@
 const Base = require('./Base.js')
-const DraftJS = require('draft-js')
 
 const storyParser = item => {
   const rawContent = JSON.parse(item.data)
   const name = item.title
-
-  const contentState = DraftJS.convertFromRaw(rawContent)
 
   return {
     ...item,

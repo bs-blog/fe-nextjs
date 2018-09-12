@@ -1,13 +1,11 @@
 import * as React from 'react'
 import BasicLayout from '../Layout/Basic'
-import css from './index.css'
 
 import List from '../../src/components/storysList/List'
 import 'isomorphic-unfetch'
 
 export default class App extends React.Component {
   render() {
-    const { storyList } = this.props
     return (
       <BasicLayout {...this.props}>
         {/* <h1>Content</h1> */}

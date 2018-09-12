@@ -1,8 +1,7 @@
 import * as React from 'react'
 import css from './Drawer.css'
 
-import { Layout, Menu, Icon, Drawer, Button } from 'antd'
-const { Sider } = Layout
+import { Menu, Icon, Drawer, Button } from 'antd'
 const SubMenu = Menu.SubMenu
 
 export default class DrawerComponent extends React.Component {

@@ -17,7 +17,7 @@ export default class App extends React.Component {
           <div className={css.headerWrapper}>
             <TopNav categoryList={categoryList} />
             <div className={css.header}>
-              <img src={LOGO_URL} />
+              <img alt={'LOGO'} src={LOGO_URL} />
             </div>
           </div>
 
