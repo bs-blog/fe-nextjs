@@ -5,17 +5,6 @@ import EditorHtml from '../../src/components/EditorHtml'
 import 'isomorphic-unfetch'
 
 export default class StoryId extends React.Component {
-  static async getInitialProps({ req }) {
-    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
-    const { id: storyId } = req.params
-
-    const result = await Promise.all([
-      fetch(`${baseUrl}/api/storys/${storyId}`).then(res => res.json())
-    ])
-
-    const [storyData] = result
-    return { storyData }
-  }
   render() {
     const { storyData } = this.props
     return (
@@ -27,4 +16,16 @@ export default class StoryId extends React.Component {
       </BasicLayout>
     )
   }
+}
+
+StoryId.getInitialProps = async ({ req }) => {
+  const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
+  const { id: storyId } = req.params
+
+  const result = await Promise.all([
+    fetch(`${baseUrl}/api/storys/${storyId}`).then(res => res.json())
+  ])
+
+  const [storyData] = result
+  return { storyData }
 }
