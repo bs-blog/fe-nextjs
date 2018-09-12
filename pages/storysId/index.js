@@ -2,6 +2,7 @@ import * as React from 'react'
 import css from './index.css'
 import BasicLayout from '../Layout/Basic'
 import EditorHtml from '../../src/components/EditorHtml'
+import 'isomorphic-unfetch'
 
 export default class StoryId extends React.Component {
   static async getInitialProps({ req }) {
