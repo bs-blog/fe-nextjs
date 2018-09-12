@@ -27,7 +27,11 @@ export default class List extends React.Component {
             const config = gridConfig[index] || gridConfig['default']
             return (
               <Col {...config} key={index}>
-                <Card story={item} height={heightConfig[index] || heightConfig['default']} />
+                <Card
+                  story={item}
+                  index={index}
+                  height={heightConfig[index] || heightConfig['default']}
+                />
               </Col>
             )
           })}
