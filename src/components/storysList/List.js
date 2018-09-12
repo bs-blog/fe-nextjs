@@ -18,7 +18,7 @@ const heightConfig = {
 
 export default class List extends React.Component {
   render() {
-    const { storyList } = this.props
+    const { storyList = [] } = this.props
     const length = storyList.length
     return (
       <div>

@@ -2,16 +2,16 @@ import * as React from 'react'
 import BasicLayout from '../Layout/Basic'
 import css from './index.css'
 
-import getConfig from 'next/config'
 import List from '../../src/components/storysList/List'
+import 'isomorphic-unfetch'
 
 export default class App extends React.Component {
   static async getInitialProps({ req }) {
-    const { serverRuntimeConfig } = getConfig()
+    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
     const result = await Promise.all([
-      serverRuntimeConfig.firebaseAdmin.fetchStoryList(),
-      serverRuntimeConfig.firebaseAdmin.fetchCategoryList(),
-      serverRuntimeConfig.firebaseAdmin.fetchAuthorList()
+      fetch(`${baseUrl}/api/storys`).then(res => res.json()),
+      fetch(`${baseUrl}/api/categorys`).then(res => res.json()),
+      fetch(`${baseUrl}/api/authors`).then(res => res.json())
     ])
 
     const [_storyList, categoryList, authorList] = result
