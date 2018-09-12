@@ -4,15 +4,15 @@ import css from './Basic.css'
 import Drawer from './Drawer'
 import TopNav from './TopNav'
 
-const { Header, Footer, Content } = Layout
+const { Footer, Content } = Layout
 
 export default class App extends React.Component {
   render() {
     const { categoryList } = this.props
     return (
-      <Layout>
+      <Layout className={css.grey}>
         <Drawer />
-        <Layout>
+        <Layout className={css.grey}>
           <div className={css.headerWrapper}>
             <div className="logo" />
             <TopNav categoryList={categoryList} />

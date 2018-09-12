@@ -40,8 +40,7 @@ export default class App extends React.Component {
 
     const bgImageStyle = {
       backgroundImage: `url(${coverUrl})`,
-      backgroundSize: 'cover',
-      height
+      minHeight: height
     }
 
     return (

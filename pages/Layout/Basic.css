@@ -1,7 +1,37 @@
 .layoutContentWrapper {
+  margin: auto;
+  width: 100%;
   min-height: 100vh;
+}
+
+div.grey {
+  background-color: #eee; 
 }
 
 .headerWrapper {
   background: #202226;
+}
+
+@media screen  and (min-width: 1601px)  {
+  .layoutContentWrapper {
+    width: 1280px;
+  }
+}
+
+@media screen  and (min-width: 1201px) and (max-width: 1600px) {
+  .layoutContentWrapper {
+    width: 1200px;
+  }
+}
+
+@media screen  and (min-width: 992px) and (max-width: 1200px) {
+  .layoutContentWrapper {
+    width: 960px;
+  }
+}
+
+@media screen  and (min-width: 768px) and (max-width: 991px) {
+  .layoutContentWrapper {
+    width: 768px;
+  }
 }
