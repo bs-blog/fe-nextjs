@@ -4,13 +4,12 @@ import css from './TopNav.css'
 
 export default class TopNav extends React.Component {
   render() {
+    const { categoryList = [] } = this.props
     return (
       <div className={css.topNavWarpper}>
-        {this.props.categoryList.slice(0, 10).map(({ name, id }) => (
-          <a href={`/categorys/${id}`}>
-            <span className={css.topNavItem} key={name}>
-              {name}
-            </span>
+        {categoryList.slice(0, 10).map(({ name, id }) => (
+          <a href={`/categorys/${id}`} key={id}>
+            <span className={css.topNavItem}>{name}</span>
           </a>
         ))}
       </div>

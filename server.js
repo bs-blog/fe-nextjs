@@ -8,15 +8,15 @@ const PORT = process.env.PORT || 3000
 const app = next({ dir: '.', dev })
 const handle = app.getRequestHandler()
 
-const routesConfig = require('./routes/pages')
+const routesConfig = require('./src/routes/pages')
 const routes = routesConfig()
+
+const api = require('./src/routes/api')
 
 app.prepare().then(() => {
   const server = express()
 
-  server.get('/hello', (req, res) => {
-    res.end('good')
-  })
+  server.use('/api', api)
 
   server.get('*', (req, res) => {
     const parsedUrl = parse(req.url, true)

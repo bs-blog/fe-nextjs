@@ -3,17 +3,16 @@ import css from './index.css'
 import BasicLayout from '../Layout/Basic'
 import EditorHtml from '../../src/components/EditorHtml'
 
-import getConfig from 'next/config'
-
 export default class StoryId extends React.Component {
   static async getInitialProps({ req }) {
+    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
     const storyId = req.paramLast
 
-    const { serverRuntimeConfig } = getConfig()
-    const storyData = await Promise.resolve(
-      serverRuntimeConfig.firebaseAdmin.fetchStoryById(storyId)
-    )
+    const result = await Promise.all([
+      fetch(`${baseUrl}/api/storys/${storyId}`).then(res => res.json())
+    ])
 
+    const [storyData] = result
     return { storyData }
   }
   render() {
