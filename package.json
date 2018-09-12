@@ -6,7 +6,7 @@
   "homepage": "https://github.com/bs-blog/fe-nextjs#readme",
   "scripts": {
     "precommit": "lint-staged",
-    "prettier": "prettier  --no-semi --single-quote --write 'pages/**/*.js' 'src/**/*.js'",
+    "prettier": "prettier  --no-semi --single-quote --write 'pages/**/**.js' 'src/**/**.js' **.js",
     "lint": "node_modules/.bin/eslint 'pages/**/*.js' 'src/**/*.js' ",
     "lint-fix": "node_modules/.bin/eslint src/ --fix",
     "dev": "nodemon --watch server.js --watch src/routes  --watch src/services server.js ",
