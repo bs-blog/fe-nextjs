@@ -1,18 +1,11 @@
 // import css from './index.css'
 import * as React from 'react'
-import getConfig from 'next/config'
 
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
-const { serverRuntimeConfig } = getConfig()
 const { SubMenu } = Menu
 const { Header, Content, Sider } = Layout
 
 export default class App extends React.Component {
-  static async getInitialProps({ req }) {
-    const initialProps = await Promise.resolve(serverRuntimeConfig.test)
-    return { ...initialProps }
-  }
-
   render() {
     return (
       <Layout>

@@ -6,9 +6,5 @@ module.exports = withCSS({
     importLoaders: 1,
     localIdentName: '[local]___[hash:base64:5]'
   },
-  serverRuntimeConfig: {
-    // Will only be available on the server side
-    ...require('./src/services')
-  },
   exportPathMap: pagesRoutes
 })
