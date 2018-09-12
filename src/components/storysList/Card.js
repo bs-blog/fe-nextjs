@@ -1,30 +1,35 @@
 import * as React from 'react'
-import { Skeleton, Card, Tag } from 'antd'
+import { Card, Tag } from 'antd'
 import css from './Card.css'
 import { timestampToDateFormat } from '../../lib/time'
 
 const CheckableTag = Tag.CheckableTag
 
-const StoryCard = (story, bgImageStyle, loading) => {
+const StoryCard = (story, bgImageStyle, index) => {
   const { title, createdAt, author, categorys } = story
+
+  console.log('index: ', index)
 
   return (
     <div alt="example" className={css.storyCardCover} style={bgImageStyle}>
-      <div className={css.storyCardCoverOverlay}>
-        <Skeleton loading={loading} avatar active>
-          <div className={css.cardMeta}>
-            <b>{title}</b>
-
-            {categorys.map(({ name }) => {
-              return <CheckableTag key={name}>{name}</CheckableTag>
-            })}
-
-            <div className={css.cardTitleContent}>
-              <i> {author.name}</i>
-              <div className={css.createdTime}>{timestampToDateFormat(createdAt, true)}</div>
-            </div>
-          </div>
-        </Skeleton>
+      <div className={css.storyCardCoverOverlay} />
+      <div className={css.cardMeta}>
+        <div className={css.cardTitleContent}>
+          <b>{title}</b>
+        </div>
+        <div className={css.cardSubTitleContent}>
+          <i> {author.name}</i>
+        </div>
+        <div className={css.cardBottomContent}>
+          {categorys.map(({ name }) => {
+            return (
+              <Tag key={name} color="gray">
+                {name}
+              </Tag>
+            )
+          })}
+          <div className={css.createdTime}>{timestampToDateFormat(createdAt, index === 0)}</div>
+        </div>
       </div>
     </div>
   )
@@ -32,11 +37,11 @@ const StoryCard = (story, bgImageStyle, loading) => {
 
 export default class App extends React.Component {
   render() {
-    const { story, height } = this.props
+    const { story, height, index } = this.props
 
     const { id, coverUrl } = story
 
-    const loading = story ? false : true
+    // const loading = story ? false : true
 
     const bgImageStyle = {
       backgroundImage: `url(${coverUrl})`,
@@ -47,7 +52,7 @@ export default class App extends React.Component {
     return (
       <a href={`/storys/${id}`}>
         <Card
-          cover={StoryCard(story, bgImageStyle, loading)}
+          cover={StoryCard(story, bgImageStyle, index)}
           bordered={false}
           hoverable
           bodyStyle={{ display: 'none' }}

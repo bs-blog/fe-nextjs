@@ -5,3 +5,14 @@
 .headerWrapper {
   background: #202226;
 }
+
+.header {
+  background: black;
+  height: 80px
+}
+
+.header img{
+  height: 100%;
+  padding: 10px 0;
+  margin-left: 80px;
+}

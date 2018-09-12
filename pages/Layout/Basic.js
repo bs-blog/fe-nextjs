@@ -5,6 +5,7 @@ import Drawer from './Drawer'
 import TopNav from './TopNav'
 
 const { Header, Footer, Content } = Layout
+const LOGO_URL = '/static/logoBlack.jpg'
 
 export default class App extends React.Component {
   render() {
@@ -14,8 +15,10 @@ export default class App extends React.Component {
         <Drawer />
         <Layout>
           <div className={css.headerWrapper}>
-            <div className="logo" />
             <TopNav categoryList={categoryList} />
+            <div className={css.header}>
+              <img src={LOGO_URL} />
+            </div>
           </div>
 
           <Content className={css.layoutContentWrapper}>{this.props.children}</Content>
