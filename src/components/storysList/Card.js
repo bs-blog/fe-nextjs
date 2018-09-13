@@ -3,8 +3,6 @@ import { Card, Tag } from 'antd'
 import css from './Card.css'
 import { timestampToDateFormat } from '../../lib/time'
 
-const CheckableTag = Tag.CheckableTag
-
 const StoryCard = (story, bgImageStyle, index) => {
   const { title, createdAt, author, categorys } = story
 
@@ -45,8 +43,7 @@ export default class App extends React.Component {
 
     const bgImageStyle = {
       backgroundImage: `url(${coverUrl})`,
-      backgroundSize: 'cover',
-      height
+      minHeight: height
     }
 
     return (
