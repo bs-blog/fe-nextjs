@@ -12,12 +12,14 @@ export default class App extends React.Component {
     const { categoryList } = this.props
     return (
       <React.Fragment>
-        <Drawer />
+        <Drawer categoryList={categoryList} />
         <Layout className={css.grey}>
           <div className={css.headerWrapper}>
             <TopNav categoryList={categoryList} />
             <div className={css.header}>
-              <img alt={'LOGO'} src={LOGO_URL} />
+              <a href="/">
+                <img alt={'LOGO'} src={LOGO_URL} />
+              </a>
             </div>
           </div>
 
