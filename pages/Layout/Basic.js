@@ -3,9 +3,9 @@ import { Layout } from 'antd'
 import css from './Basic.css'
 import Drawer from './Drawer'
 import TopNav from './TopNav'
+import LogoWrapper from './LogoWrapper'
 
 const { Footer, Content } = Layout
-const LOGO_URL = '/static/logoBlack.jpg'
 
 export default class App extends React.Component {
   render() {
@@ -16,11 +16,7 @@ export default class App extends React.Component {
         <Layout className={css.grey}>
           <div className={css.headerWrapper}>
             <TopNav categoryList={categoryList} />
-            <div className={css.header}>
-              <a href="/">
-                <img alt={'LOGO'} src={LOGO_URL} />
-              </a>
-            </div>
+            <LogoWrapper />
           </div>
 
           <Content className={css.layoutContentWrapper}>{this.props.children}</Content>
