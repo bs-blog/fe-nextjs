@@ -6,8 +6,6 @@ import { timestampToDateFormat } from '../../lib/time'
 const StoryCard = (story, bgImageStyle, index) => {
   const { title, createdAt, author, categorys } = story
 
-  console.log('index: ', index)
-
   return (
     <div alt="example" className={css.storyCardCover} style={bgImageStyle}>
       <div className={css.storyCardCoverOverlay} />

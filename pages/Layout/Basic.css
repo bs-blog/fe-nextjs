@@ -14,12 +14,12 @@ div.grey {
 
 .header {
   background: black;
-  height: 80px
+  height: 80px;
+  padding: 14px 8px 13px;
 }
 
 .header img{
   height: 100%;
-  padding: 10px 0;
   margin-left: 80px;
 }
 
