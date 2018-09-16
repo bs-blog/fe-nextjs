@@ -27,9 +27,9 @@ const Drawer = props => {
         {categoryList.length % 2 === 1 && <div className={css.tableItem} key={99} />}
       </div>
 
-      <a onClick={onClose} className={css.closeButton}>
-        <span>閉閉</span>
-      </a>
+      <div onClick={onClose} className={css.closeButton}>
+        <Icon type="close" style={{ fontSize: '24px' }} />
+      </div>
     </div>
   )
 }
@@ -51,14 +51,13 @@ export default class DrawerComponent extends React.Component {
   }
 
   render() {
-    const { categoryList = [] } = this.props
     return (
       <React.Fragment>
         {!this.state.visible && (
-          <a onClick={this.showDrawer} className={css.drawerButton}>
+          <div onClick={this.showDrawer} className={css.drawerButton}>
             <Icon type={'menu'} />
             <span>分類</span>
-          </a>
+          </div>
         )}
 
         {this.state.visible && <Drawer {...this.props} onClose={this.onClose} />}
