@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Card, Tag } from 'antd'
 import css from './Card.css'
+import { Link } from '../../routes/pages'
 import { timestampToDateFormat } from '../../lib/time'
 
 const StoryCard = (story, bgImageStyle, index) => {
@@ -45,14 +46,14 @@ export default class App extends React.Component {
     }
 
     return (
-      <a href={`/storys/${id}`}>
+      <Link route={`/storys/${id}`} params={{ storyId: id }}>
         <Card
           cover={StoryCard(story, bgImageStyle, index)}
           bordered={false}
           hoverable
           bodyStyle={{ display: 'none' }}
         />
-      </a>
+      </Link>
     )
   }
 }

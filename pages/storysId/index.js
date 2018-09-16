@@ -18,9 +18,10 @@ export default class StoryId extends React.Component {
   }
 }
 
-StoryId.getInitialProps = async ({ req }) => {
+StoryId.getInitialProps = async props => {
+  const { req, query } = props
   const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
-  const { id: storyId } = req.params
+  const storyId = (query && query.id) || (req && req.params && req.params.id)
 
   const result = await Promise.all([
     fetch(`${baseUrl}/api/storys/${storyId}`).then(res => res.json())
