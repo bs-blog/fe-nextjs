@@ -12,9 +12,10 @@ export default class App extends React.Component {
     const { categoryList } = this.props
     return (
       <React.Fragment>
-        <Drawer categoryList={categoryList} />
         <Layout className={css.grey}>
           <div className={css.headerWrapper}>
+            {/* only shown in xs and s screen size */}
+            <Drawer categoryList={categoryList} />
             <TopNav categoryList={categoryList} />
             <LogoWrapper />
           </div>
