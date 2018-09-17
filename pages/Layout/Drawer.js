@@ -1,41 +1,10 @@
 import * as React from 'react'
 import css from './Drawer.css'
 
-import { Icon } from 'antd'
-import LogoWrapper from './LogoWrapper'
-
-const Drawer = props => {
-  // const {title} = props
-  const title = '分類'
-  const { onClose, categoryList } = props
-
-  return (
-    <div className={css.drawerPanel}>
-      <LogoWrapper />
-
-      <div className={css.titleWrapper}>
-        <span className={css.panelTitle}>{title}</span>
-      </div>
-      <div className={css.tableWrapper}>
-        {categoryList.map(item => {
-          return (
-            <div className={css.tableItem} key={item.id}>
-              <a href={`/categorys/${item.id}`}>{item.name}</a>
-            </div>
-          )
-        })}
-        {categoryList.length % 2 === 1 && <div className={css.tableItem} key={99} />}
-      </div>
-
-      <div onClick={onClose} className={css.closeButton}>
-        <Icon type="close" style={{ fontSize: '24px' }} />
-      </div>
-    </div>
-  )
-}
+import { Icon, Drawer } from 'antd'
+const DEFAULT_TITLE = '分類'
 
 export default class DrawerComponent extends React.Component {
-  // state = { visible: true }
   state = { visible: false }
 
   showDrawer = () => {
@@ -51,6 +20,7 @@ export default class DrawerComponent extends React.Component {
   }
 
   render() {
+    const { categoryList } = this.props
     return (
       <React.Fragment>
         {!this.state.visible && (
@@ -60,7 +30,27 @@ export default class DrawerComponent extends React.Component {
           </div>
         )}
 
-        {this.state.visible && <Drawer {...this.props} onClose={this.onClose} />}
+        <Drawer
+          title={<span className={css.titleWrapper}>{DEFAULT_TITLE}</span>}
+          placement="left"
+          closable={true}
+          onClose={this.onClose}
+          visible={this.state.visible}
+          width={'90%'}
+        >
+          <div className={''}>
+            <div className={css.tableWrapper}>
+              {categoryList.map(item => {
+                return (
+                  <div className={css.tableItem} key={item.id}>
+                    <a href={`/categorys/${item.id}`}>{item.name}</a>
+                  </div>
+                )
+              })}
+              {categoryList.length % 2 === 1 && <div className={css.tableItem} key={99} />}
+            </div>
+          </div>
+        </Drawer>
       </React.Fragment>
     )
   }
