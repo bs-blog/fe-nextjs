@@ -1,35 +1,5 @@
-.drawerPanel {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  background-color: black;
-  padding: 5px 20px;
-  color: #c0c0c0;
-  font-size: 20px;
-  animation-name: drawerAnimation;
-  animation-duration: 0.3s;
-}
+.drawerStyle{
 
-.closeButton {
-  position: fixed;
-  bottom: 20px;
-  left: 10px;
-  width: 46px;
-  height: 39px;
-  z-index: 20000001;
-  width: 46px;
-  height: 39px;
-  border-radius: 2px;
-  background-color: rgba(62,62,62,0.85);
-  padding-top: 8px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.closeButton span {
-  color: #fff;
 }
 
 .drawerButton {
@@ -50,19 +20,13 @@
 
 .titleWrapper {
   color: #286ea0;
-  border-bottom: 1px solid #2b485d;
-  margin-bottom: 15px;
-}
-
-
-.titleWrapper span {
   letter-spacing: 1px;
- }
+}
 
 .tableWrapper {
   width: 100%;
-  border-bottom: 1px solid #333;
-  border-top: 1px solid #333;
+  border-bottom: 1px solid #e2e2e2;
+  border-top: 1px solid #e2e2e2;
   margin-top: 0;
   flex-flow: wrap;
   display: flex;
@@ -71,8 +35,8 @@
   width: 50%;
   float: left;
   clear: both;
-  border-top: 1px solid #333;
-  border-right: 1px solid #333;
+  border-top: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
   padding: 6px;
   width: 49.8%;
   text-align: left;
