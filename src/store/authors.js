@@ -1,4 +1,4 @@
-const authors = (state = [], action) => {
+const authors = (state = {}, action) => {
   switch (action.type) {
     case 'SET_AUTHORS_LIST':
       return {

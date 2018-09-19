@@ -1,4 +1,4 @@
-const category = (state = [], action) => {
+const category = (state = {}, action) => {
   switch (action.type) {
     case 'SET_CATEGORYS_LIST':
       return {
