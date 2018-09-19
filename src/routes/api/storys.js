@@ -4,7 +4,7 @@ const firebaseAdmin = require('../../lib/firebaseAdmin')
 router.get('/', async function(req, res) {
   try {
     const data = await firebaseAdmin.fetchStoryList()
-    res.json(data)
+    res.json(data.reverse())
   } catch (err) {
     res.status(500).json(err)
   }
