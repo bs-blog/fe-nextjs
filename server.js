@@ -18,6 +18,9 @@ app.prepare().then(() => {
   server.get('/storys/:id', (req, res) => {
     return app.render(req, res, '/storysId', { id: req.params.id })
   })
+  server.get('/categorys/:id', (req, res) => {
+    return app.render(req, res, '/categorysId', { id: req.params.id })
+  })
 
   server.get('*', (req, res) => {
     return handle(req, res)

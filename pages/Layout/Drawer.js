@@ -20,7 +20,7 @@ export default class DrawerComponent extends React.Component {
   }
 
   render() {
-    const { categoryList } = this.props
+    const { categoryList = [] } = this.props
     return (
       <React.Fragment>
         {!this.state.visible && (
@@ -40,13 +40,15 @@ export default class DrawerComponent extends React.Component {
         >
           <div className={''}>
             <div className={css.tableWrapper}>
-              {categoryList.map(item => {
-                return (
-                  <div className={css.tableItem} key={item.id}>
-                    <a href={`/categorys/${item.id}`}>{item.name}</a>
-                  </div>
-                )
-              })}
+              {categoryList &&
+                categoryList.length >= 1 &&
+                categoryList.map(item => {
+                  return (
+                    <div className={css.tableItem} key={item.id}>
+                      <a href={`/categorys/${item.id}`}>{item.name}</a>
+                    </div>
+                  )
+                })}
               {categoryList.length % 2 === 1 && <div className={css.tableItem} key={99} />}
             </div>
           </div>
