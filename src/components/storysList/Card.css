@@ -37,7 +37,9 @@
 
 .createdTime {
   float: right;
-  font-size: 12px;
+  padding-bottom: 2px;
+  font-size: 68%;
+  letter-spacing: 0.5px;
 }
 
 .cardTitleContent b{
@@ -49,7 +51,9 @@
   margin-bottom: 10px;
 }
 .cardSubTitleContent{
-
+  font-size: 81%;
+  line-height: 1.2;
+  text-align: right;
 }
 .cardBottomContent{
   margin-top: 5px;

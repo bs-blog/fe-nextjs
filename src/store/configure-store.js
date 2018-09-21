@@ -3,6 +3,7 @@ import { createRouterMiddleware, initialRouterState, routerReducer } from 'conne
 import storys from './storys'
 import authors from './authors'
 import categorys from './categorys'
+import system from './system'
 
 const bindMiddleware = middleware => {
   if (process.env.NODE_ENV !== 'production') {
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   router: routerReducer,
   storys,
   categorys,
-  authors
+  authors,
+  system
 })
 
 export const configureStore = (initialState = {}, { isServer, asPath }) => {

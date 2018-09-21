@@ -20,7 +20,7 @@ const StoryCard = (story, bgImageStyle, index) => {
         <div className={css.cardBottomContent}>
           {categorys.map(({ name }) => {
             return (
-              <Tag key={name} color="gray">
+              <Tag key={name} color="#3e3e3e">
                 {name}
               </Tag>
             )

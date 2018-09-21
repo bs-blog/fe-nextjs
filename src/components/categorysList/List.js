@@ -5,15 +5,11 @@ import { Row, Col } from 'antd'
 
 const gridConfig = {
   0: { xs: 24, sm: 24, md: 24, lg: 24, xl: 24 },
-  1: { xs: 24, sm: 12, md: 6, lg: 8, xl: 8 },
-  2: { xs: 24, sm: 12, md: 6, lg: 8, xl: 8 },
-  3: { xs: 24, sm: 12, md: 6, lg: 8, xl: 8 },
-  default: { xs: 24, sm: 12, md: 6, lg: 4, xl: 4 }
+  default: { xs: 24, sm: 12, md: 12, lg: 6, xl: 6 }
 }
 
 const heightConfig = {
   0: 400,
-  1: 400,
   default: 200
 }
 
@@ -28,15 +24,11 @@ export default class List extends React.Component {
           </Col>
         </Row>
         <Row type="flex" justify="start">
-          {storyList.map((item, index) => {
-            const config = gridConfig[index] || gridConfig['default']
+          {storyList.slice(1).map((item, index) => {
+            const config = gridConfig['default']
             return (
               <Col {...config} key={index}>
-                <Card
-                  story={item}
-                  index={index}
-                  height={heightConfig[index] || heightConfig['default']}
-                />
+                <Card story={item} index={index} />
               </Col>
             )
           })}

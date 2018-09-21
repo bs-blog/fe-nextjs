@@ -61,11 +61,15 @@ Container.fetchRemoteData = async args => {
 
 Container.getInitialProps = async args => {
   // cant get this.props.mapDispatchToProps
-  const { store } = args
+  const { store, req, query } = args
+  const categoryId = (query && query.id) || (req && req.params && req.params.id)
   const { storyList, categoryList, authorList } = await Container.fetchRemoteData(args)
+  const currentCategory = categoryList.find(item => item.id === categoryId)
+  const system = { currentCategory }
   store.dispatch({ type: 'SET_STORY_LIST', storyList })
   store.dispatch({ type: 'SET_CATEGORYS_LIST', categoryList })
   store.dispatch({ type: 'SET_AUTHORS_LIST', authorList })
+  store.dispatch({ type: 'SET_SYSTEM', system })
   return {}
 }
 
@@ -73,7 +77,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     storyList: state.storys.storyList,
     categoryList: state.categorys.categoryList,
-    authorList: state.authors.authorList
+    authorList: state.authors.authorList,
+    system: state.system
   }
 }
 

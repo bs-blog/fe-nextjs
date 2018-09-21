@@ -1,58 +1,48 @@
 import * as React from 'react'
-import { Card, Tag } from 'antd'
+import { Card, Tag, Avatar } from 'antd'
 import css from './Card.css'
 import { Link } from '../../routes/pages'
 import { timestampToDateFormat } from '../../lib/time'
+const { Meta } = Card
 
-const StoryCard = (story, bgImageStyle, index) => {
-  const { title, createdAt, author, categorys } = story
+const StoryCard = bgImageStyle => {
+  return <div alt="example" className={css.storyCardCover} style={bgImageStyle} />
+}
+
+const Description = story => {
+  const { author, createdAt } = story
+  const { name: authorName } = author
 
   return (
-    <div alt="example" className={css.storyCardCover} style={bgImageStyle}>
-      <div className={css.storyCardCoverOverlay} />
-      <div className={css.cardMeta}>
-        <div className={css.cardTitleContent}>
-          <b>{title}</b>
-        </div>
-        <div className={css.cardSubTitleContent}>
-          <i> {author.name}</i>
-        </div>
-        <div className={css.cardBottomContent}>
-          {categorys.map(({ name }) => {
-            return (
-              <Tag key={name} color="gray">
-                {name}
-              </Tag>
-            )
-          })}
-          <div className={css.createdTime}>{timestampToDateFormat(createdAt, index === 0)}</div>
-        </div>
-      </div>
+    <div className={css.description}>
+      <p>{authorName}</p>
+      <span className={css.createdTime}>{timestampToDateFormat(createdAt)}</span>
     </div>
   )
 }
 
 export default class App extends React.Component {
   render() {
-    const { story, height, index } = this.props
+    const { story } = this.props
+    const imgHeight = '200px'
 
-    const { id, coverUrl } = story
-
-    // const loading = story ? false : true
+    const { id, title, coverUrl, author } = story
+    const { imageUrl: authorImageUrl } = author
 
     const bgImageStyle = {
       backgroundImage: `url(${coverUrl})`,
-      minHeight: height
+      minHeight: imgHeight
     }
 
     return (
       <Link route={`/storys/${id}`} params={{ storyId: id }}>
-        <Card
-          cover={StoryCard(story, bgImageStyle, index)}
-          bordered={false}
-          hoverable
-          bodyStyle={{ display: 'none' }}
-        />
+        <Card cover={StoryCard(bgImageStyle)}>
+          <Meta
+            avatar={<Avatar src={authorImageUrl} />}
+            title={title}
+            description={Description(story)}
+          />
+        </Card>
       </Link>
     )
   }
