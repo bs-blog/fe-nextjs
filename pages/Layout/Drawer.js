@@ -1,6 +1,6 @@
 import * as React from 'react'
 import css from './Drawer.css'
-
+import { Link } from '../../src/routes/pages'
 import { Icon, Drawer } from 'antd'
 const DEFAULT_TITLE = '分類'
 
@@ -42,10 +42,12 @@ export default class DrawerComponent extends React.Component {
             <div className={css.tableWrapper}>
               {categoryList &&
                 categoryList.length >= 1 &&
-                categoryList.map(item => {
+                categoryList.map(({ id, name }) => {
                   return (
-                    <div className={css.tableItem} key={item.id}>
-                      <a href={`/categorys/${item.id}`}>{item.name}</a>
+                    <div className={css.tableItem} key={id}>
+                      <Link route={`/categorys/${id}`} params={{ id: id }}>
+                        {name}
+                      </Link>
                     </div>
                   )
                 })}

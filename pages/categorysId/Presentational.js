@@ -9,7 +9,7 @@ export default class Presentational extends React.Component {
     const { currentCategory = {} } = system
     const { name } = currentCategory
     return (
-      <BasicLayout categoryList={categoryList}>
+      <BasicLayout categoryList={categoryList} key={name}>
         {name && <h1 className={css.categoryTitle}> 分類 / {name}</h1>}
         <CategorysList storyList={storyList} />
       </BasicLayout>

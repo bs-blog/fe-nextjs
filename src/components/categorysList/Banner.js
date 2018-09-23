@@ -5,7 +5,8 @@ import { Link } from '../../routes/pages'
 import { timestampToDateFormat } from '../../lib/time'
 
 const StoryCard = (story, bgImageStyle, index) => {
-  const { title, createdAt, author, categorys } = story
+  const { title, createdAt, author = {}, categorys } = story
+  const { name = '' } = author
 
   return (
     <div alt="example" className={css.storyCardCover} style={bgImageStyle}>
@@ -15,7 +16,7 @@ const StoryCard = (story, bgImageStyle, index) => {
           <h1>{title}</h1>
         </div>
         <div className={css.cardSubTitleContent}>
-          <i> {author.name}</i>
+          <i> {name}</i>
         </div>
         <div className={css.cardBottomContent}>
           <div className={css.createdTime}>{timestampToDateFormat(createdAt, index === 0)}</div>
@@ -27,9 +28,8 @@ const StoryCard = (story, bgImageStyle, index) => {
 
 export default class App extends React.Component {
   render() {
-    const { story, height, index } = this.props
-
-    const { id, coverUrl } = story
+    const { story = {}, height, index } = this.props
+    const { id = '', coverUrl } = story
 
     // const loading = story ? false : true
 

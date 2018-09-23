@@ -59,8 +59,12 @@ Container.fetchRemoteData = async args => {
   return { storyList, categoryList, authorList }
 }
 
+Container.resetStoryList = args => {
+  const { store } = args
+  return store.dispatch({ type: 'SET_STORY_LIST', storyList: [] })
+}
 Container.getInitialProps = async args => {
-  // cant get this.props.mapDispatchToProps
+  Container.resetStoryList(args)
   const { store, req, query } = args
   const categoryId = (query && query.id) || (req && req.params && req.params.id)
   const { storyList, categoryList, authorList } = await Container.fetchRemoteData(args)
