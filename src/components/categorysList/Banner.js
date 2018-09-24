@@ -16,7 +16,7 @@ const StoryCard = (story, bgImageStyle, index) => {
           <h1>{title}</h1>
         </div>
         <div className={css.cardSubTitleContent}>
-          <i> {name}</i>
+          <span> {name}</span>
         </div>
         <div className={css.cardBottomContent}>
           <div className={css.createdTime}>{timestampToDateFormat(createdAt, index === 0)}</div>

@@ -26,6 +26,11 @@ module.exports = class StoryId extends Base {
   }
 
   normalize(result) {
-    return storyParser(result)
+    const parsedStory = storyParser(result)
+
+    return {
+      ...parsedStory,
+      categorys: this.fbListToArray(parsedStory.categorys)
+    }
   }
 }

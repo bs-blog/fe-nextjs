@@ -16,25 +16,30 @@ const storyShema = [
   'title',
   'updatedAt',
   'id',
-  'name'
+  'name',
+  'rawContent'
 ]
-const storyModel = (storyList = []) => {
+
+const storyModel = (storyItem = {}) => {
+  if (!storyItem) return {}
+
+  const obj = {}
+  for (const key of storyShema) {
+    if (storyItem[key]) obj[key] = storyItem[key]
+  }
+  return obj
+}
+const storyListModel = (storyList = []) => {
   if (!storyList) return []
 
-  return storyList.map(item => {
-    const obj = {}
-    for (const key of storyShema) {
-      if (item[key]) obj[key] = item[key]
-    }
-    return obj
-  })
+  return storyList.map(storyModel)
 }
 
 router.get('/', async function(req, res) {
   try {
     const { categoryId } = req.query
     const _data = await cacheFetchStoryList()
-    let data = storyModel(_data)
+    let data = storyListModel(_data)
 
     if (categoryId) {
       data = data.filter(item => {
@@ -44,6 +49,7 @@ router.get('/', async function(req, res) {
 
     res.json(data.reverse())
   } catch (err) {
+    console.error(err)
     res.status(500).json(err)
   }
 })
@@ -53,7 +59,8 @@ router.get('/:storyId', async function(req, res) {
     const { storyId } = req.params
     if (!storyId) throw new Error('Given null storyId')
     const data = await cacheFetchStoryById(storyId)
-    res.json(data)
+    res.json(storyModel(data))
+    // res.json((data))
   } catch (err) {
     res.status(500).json(err)
   }

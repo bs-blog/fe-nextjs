@@ -15,13 +15,15 @@ const StoryCard = (story, bgImageStyle, index) => {
           <b>{title}</b>
         </div>
         <div className={css.cardSubTitleContent}>
-          <i> {author.name}</i>
+          <span> {author.name}</span>
         </div>
         <div className={css.cardBottomContent}>
-          {categorys.map(({ name }) => {
+          {categorys.map(({ name, id }) => {
             return (
-              <Tag key={name} color="#3e3e3e">
-                {name}
+              <Tag key={name} color="#1f1f1f" style={{ borderRadius: '0' }}>
+                <Link route={`/categorys/${id}`} params={{ id: id }}>
+                  {name}
+                </Link>
               </Tag>
             )
           })}

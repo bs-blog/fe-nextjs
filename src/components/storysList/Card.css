@@ -37,9 +37,9 @@
 
 .createdTime {
   float: right;
-  padding-bottom: 2px;
   font-size: 68%;
   letter-spacing: 0.5px;
+  line-height: 24px;
 }
 
 .cardTitleContent b{
