@@ -1,32 +1,24 @@
 import * as React from 'react'
 import { Card, Tag } from 'antd'
-import css from './Card.css'
+import css from './Banner.css'
 import { Link } from '../../routes/pages'
 import { timestampToDateFormat } from '../../lib/time'
 
 const StoryCard = (story, bgImageStyle, index) => {
-  const { title, createdAt, author, categorys } = story
+  const { title, createdAt, author = {}, categorys } = story
+  const { name = '' } = author
 
   return (
     <div alt="example" className={css.storyCardCover} style={bgImageStyle}>
       <div className={css.storyCardCoverOverlay} />
       <div className={css.cardMeta}>
         <div className={css.cardTitleContent}>
-          <b>{title}</b>
+          <h1>{title}</h1>
         </div>
         <div className={css.cardSubTitleContent}>
-          <span> {author.name}</span>
+          <span> {name}</span>
         </div>
         <div className={css.cardBottomContent}>
-          {categorys.map(({ name, id }) => {
-            return (
-              <Tag key={name} color="#1f1f1f" style={{ borderRadius: '0' }}>
-                <Link route={`/categorys/${id}`} params={{ id: id }}>
-                  {name}
-                </Link>
-              </Tag>
-            )
-          })}
           <div className={css.createdTime}>{timestampToDateFormat(createdAt, index === 0)}</div>
         </div>
       </div>
@@ -36,9 +28,8 @@ const StoryCard = (story, bgImageStyle, index) => {
 
 export default class App extends React.Component {
   render() {
-    const { story, height, index } = this.props
-
-    const { id, coverUrl } = story
+    const { story = {}, height, index } = this.props
+    const { id = '', coverUrl } = story
 
     // const loading = story ? false : true
 

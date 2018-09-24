@@ -20,7 +20,15 @@ Container.fetchRemoteData = async args => {
     fetch(`${baseUrl}/api/authors`).then(res => res.json())
   ])
 
-  const [story, categoryList, authorList] = result
+  const [_story, categoryList, authorList] = result
+  const { author: authorId, categorys: categoryIdList } = _story
+
+  const author = authorList.find(authorItem => authorItem.id === authorId)
+  const categorys = categoryIdList
+    .map(({ id }) => categoryList.find(catItem => catItem.id === id))
+    .filter(_story => _story && _story.id)
+  const story = { ..._story, author, categorys }
+
   return { story, categoryList, authorList }
 }
 

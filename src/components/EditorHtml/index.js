@@ -52,6 +52,19 @@ export default class EditorComponent extends React.Component {
             line-height: 1.15;
             font-weight: 600;
           }
+          .DraftEditor-editorContainer blockquote {
+            margin-top: 36px;
+            --x-height-multiplier: 0.342;
+            --baseline-multiplier: 0.22;
+            font-family: medium-content-slab-serif-font, Georgia, Cambria, 'Times New Roman', Times,
+              serif;
+            font-weight: 400;
+            font-style: italic;
+            padding: 0 10%;
+            font-size: 24px;
+            margin-left: -1.5px;
+            letter-spacing: -0.005em;
+          }
           .md-block-paragraph {
             margin-top: 21px;
           }

@@ -10,7 +10,8 @@ class Container extends React.Component {
 }
 
 Container.fetchRemoteData = async args => {
-  const { req, store } = args
+  const { req, store, query } = args
+  const categoryId = (query && query.id) || (req && req.params && req.params.id)
   const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
 
   const { authors, categorys, storys } = store.getState()
@@ -31,14 +32,16 @@ Container.fetchRemoteData = async args => {
   }
 
   if (!storyListState && categoryListState && authorListState) {
-    _storyList = await fetch(`${baseUrl}/api/storys`).then(res => res.json())
+    _storyList = await fetch(`${baseUrl}/api/storys?categoryId=${categoryId}`).then(res =>
+      res.json()
+    )
     authorList = authorListState
     categoryList = categoryListState
   }
 
   if (!storyListState && (!categoryListState || !authorListState)) {
     ;[_storyList, categoryList, authorList] = await Promise.all([
-      fetch(`${baseUrl}/api/storys`).then(res => res.json()),
+      fetch(`${baseUrl}/api/storys?categoryId=${categoryId}`).then(res => res.json()),
       fetch(`${baseUrl}/api/categorys`).then(res => res.json()),
       fetch(`${baseUrl}/api/authors`).then(res => res.json())
     ])
@@ -62,12 +65,15 @@ Container.resetStoryList = args => {
 }
 Container.getInitialProps = async args => {
   Container.resetStoryList(args)
-  // cant get this.props.mapDispatchToProps
-  const { store } = args
+  const { store, req, query } = args
+  const categoryId = (query && query.id) || (req && req.params && req.params.id)
   const { storyList, categoryList, authorList } = await Container.fetchRemoteData(args)
+  const currentCategory = categoryList.find(item => item.id === categoryId)
+  const system = { currentCategory }
   store.dispatch({ type: 'SET_STORY_LIST', storyList })
   store.dispatch({ type: 'SET_CATEGORYS_LIST', categoryList })
   store.dispatch({ type: 'SET_AUTHORS_LIST', authorList })
+  store.dispatch({ type: 'SET_SYSTEM', system })
   return {}
 }
 
@@ -75,7 +81,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     storyList: state.storys.storyList,
     categoryList: state.categorys.categoryList,
-    authorList: state.authors.authorList
+    authorList: state.authors.authorList,
+    system: state.system
   }
 }
 

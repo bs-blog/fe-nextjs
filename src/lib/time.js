@@ -24,9 +24,9 @@ export const timestampToDateFormat = (timestamp, isIncludedTime) => {
   const hour = _d.getUTCHours()
   const min = _d.getUTCMinutes()
 
-  if (isIncludedTime) return `${year}-${month}-${day} ${fillZero(hour)}:${fillZero(min)}`
+  if (isIncludedTime) return `${year}/${month}/${day} ${fillZero(hour)}:${fillZero(min)}`
 
-  return `${year}-${month}-${day}`
+  return `${year}/${month}/${day}`
 }
 
 // module.exports = {numToTimeFormat, timestampToDateFormat}
