@@ -12,10 +12,7 @@ export default class App extends React.Component {
 
     return (
       <div className={css.bannerWrapper}>
-        <div>
-          <span>作者 : {authorName}</span>
-        </div>
-        <div>
+        <div className={css.bannerCategory}>
           {categorys.map(({ name, id }) => {
             return (
               <Tag key={name} color="#1f1f1f" style={{ borderRadius: '0' }}>
@@ -26,8 +23,11 @@ export default class App extends React.Component {
             )
           })}
         </div>
+        <div className={css.bannerAuthor}>
+          <span>作者 : {authorName}</span>
+        </div>
 
-        <div className={css.createdAt}>
+        <div className={css.bannerCreatedAt}>
           <Icon type="clock-circle" theme="outlined" />
           <span>{timestampToDateFormat(createdAt, true)}</span>
         </div>
