@@ -4,8 +4,9 @@ import css from './Basic.css'
 import Drawer from './Drawer'
 import TopNav from './TopNav'
 import LogoWrapper from './LogoWrapper'
+import Footer from './Footer'
 
-const { Footer, Content } = Layout
+const { Content } = Layout
 
 export default class App extends React.Component {
   render() {
@@ -21,7 +22,7 @@ export default class App extends React.Component {
           </div>
 
           <Content className={css.layoutContentWrapper}>{this.props.children}</Content>
-          <Footer>Footer</Footer>
+          <Footer />
         </Layout>
       </React.Fragment>
     )
