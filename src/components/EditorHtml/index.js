@@ -70,7 +70,7 @@ export default class EditorComponent extends React.Component {
           }
           .md-block-paragraph span {
             font-size: 18px;
-            line-height: 1.58;
+            line-height: 1.7;
             letter-spacing: -0.004em;
           }
 
