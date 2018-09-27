@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Card, Tag, Avatar } from 'antd'
+import { Card, Avatar } from 'antd'
 import css from './Card.css'
 import { Link } from '../../routes/pages'
 import { timestampToDateFormat } from '../../lib/time'
