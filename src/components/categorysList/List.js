@@ -20,7 +20,9 @@ export default class List extends React.Component {
       <div>
         <Row type="flex" justify="start">
           <Col {...gridConfig[0]}>
-            <Banner story={storyList[0]} height={heightConfig[0] || heightConfig['default']} />
+            {storyList[0] && (
+              <Banner story={storyList[0]} height={heightConfig[0] || heightConfig['default']} />
+            )}
           </Col>
         </Row>
         <Row type="flex" justify="start">

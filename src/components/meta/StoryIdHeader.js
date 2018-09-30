@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig()
-const { PRODUCT_NAME, PRODUCT_AUTHOR, PRODUCT_HOST = '' } = publicRuntimeConfig
+const { PRODUCT_NAME, PRODUCT_AUTHOR, PRODUCT_HOST = '', FACEBOOK_APP_ID } = publicRuntimeConfig
 
 const stringifyArrayObj = (list, field) => {
   return list.map(item => item[field]).join(',')
@@ -42,11 +42,13 @@ export default ({ storyData }) => {
 
       {/* <!-- Open Graph data facebook --> */}
       <meta property="og:title" content={name} />
-      <meta property="og:type" content="article" />
+      <meta property="og:type" content="website" />
       <meta property="og:url" content={PRODUCT_HOST} />
       <meta property="og:image" content={coverUrl} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={PRODUCT_NAME} />
+      <meta property="og:locale" content="zh_TW" />
+      <meta property="fb:app_id" content={FACEBOOK_APP_ID} />
     </Head>
   )
 }
