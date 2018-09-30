@@ -2,51 +2,35 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import 'isomorphic-unfetch'
 import Presentational from './Presentational'
+import { fetchConfig, initStory } from '../lib/fetchRemoteData'
 
 class Container extends React.Component {
   render() {
     return <Presentational {...this.props} />
   }
 }
-
-Container.fetchRemoteData = async args => {
+Container.initRemoteData = async args => {
   const { req, query } = args
   const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
   const storyId = (query && query.id) || (req && req.params && req.params.id)
 
-  const result = await Promise.all([
-    fetch(`${baseUrl}/api/storys/${storyId}`).then(res => res.json()),
-    fetch(`${baseUrl}/api/categorys`).then(res => res.json()),
-    fetch(`${baseUrl}/api/authors`).then(res => res.json())
+  const [config, _story] = await Promise.all([
+    fetchConfig(args),
+    fetch(`${baseUrl}/api/storys/${storyId}`).then(res => res.json())
   ])
-
-  const [_story, categoryList, authorList] = result
-  const { author: authorId, categorys: categoryIdList } = _story
-
-  const author = authorList.find(authorItem => authorItem.id === authorId)
-  const categorys = categoryIdList
-    .map(({ id }) => categoryList.find(catItem => catItem.id === id))
-    .filter(_story => _story && _story.id)
-  const story = { ..._story, author, categorys }
-
+  const [categoryList, authorList] = config
+  const story = initStory(_story, categoryList, authorList)
   return { story, categoryList, authorList }
 }
-
-Container.getInitialProps = async args => {
+Container.reset = args => {
   const { store } = args
-  const { authors, categorys, storys } = store.getState()
-  if (
-    authors.authorList &&
-    authors.authorList.length > 0 &&
-    categorys.categoryList &&
-    categorys.categoryList.length > 0 &&
-    storys.story &&
-    storys.story.length > 0
-  ) {
-    return {}
-  }
+  store.dispatch({ type: 'TURN_OFF_LOADING' })
+}
+Container.getInitialProps = async args => {
+  Container.reset(args)
+  const { store } = args
 
-  const { story, categoryList, authorList } = await Container.fetchRemoteData(args)
+  const { story, categoryList, authorList } = await Container.initRemoteData(args)
 
   store.dispatch({ type: 'SET_STORY_SINGLE', story })
   store.dispatch({ type: 'SET_CATEGORYS_LIST', categoryList })

@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { Card, Tag, Avatar } from 'antd'
+import { Card, Avatar } from 'antd'
 import css from './Card.css'
 import { Link } from '../../routes/pages'
-import { timestampToDateFormat } from '../../lib/time'
+import { easyReadDateFormat } from '../../lib/time'
 const { Meta } = Card
 
 const StoryCard = bgImageStyle => {
@@ -10,13 +10,26 @@ const StoryCard = bgImageStyle => {
 }
 
 const Description = story => {
-  const { author, createdAt } = story
+  const { author, createdAt, description } = story
   const { name: authorName } = author
 
   return (
     <div className={css.description}>
-      <p>{authorName}</p>
-      <span className={css.createdTime}>{timestampToDateFormat(createdAt)}</span>
+      <p className={css.cardDescription}>{description}</p>
+      <span className={[css.authorNameInContent, css.authorName].join(' ')}>
+        <b> {authorName}</b>
+      </span>
+      <span className={css.createdTime}>{easyReadDateFormat(createdAt)}</span>
+    </div>
+  )
+}
+
+const AuthorAvatar = author => {
+  const { imageUrl, name } = author
+  return (
+    <div className={css.authorAvatar}>
+      <Avatar src={imageUrl} />
+      <span className={css.authorName}>{name}</span>
     </div>
   )
 }
@@ -27,7 +40,6 @@ export default class App extends React.Component {
     const imgHeight = '200px'
 
     const { id, title, coverUrl, author } = story
-    const { imageUrl: authorImageUrl } = author
 
     const bgImageStyle = {
       backgroundImage: `url(${coverUrl})`,
@@ -37,11 +49,7 @@ export default class App extends React.Component {
     return (
       <Link route={`/storys/${id}`} params={{ storyId: id }}>
         <Card cover={StoryCard(bgImageStyle)}>
-          <Meta
-            avatar={<Avatar src={authorImageUrl} />}
-            title={title}
-            description={Description(story)}
-          />
+          <Meta avatar={AuthorAvatar(author)} title={title} description={Description(story)} />
         </Card>
       </Link>
     )

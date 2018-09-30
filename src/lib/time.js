@@ -3,7 +3,7 @@ const fillZero = num => {
   return num
 }
 
-export const numToTimeFormat = _num => {
+const numToTimeFormat = _num => {
   if (_num === 0) return '00:00'
 
   if (!_num) return ''
@@ -14,9 +14,7 @@ export const numToTimeFormat = _num => {
   return `${fillZero(min)}:${fillZero(sec)}`
 }
 
-export const timestampToDateFormat = (timestamp, isIncludedTime) => {
-  if (!timestamp) return ''
-
+const timestampToDateFormat = (timestamp, isIncludedTime) => {
   const _d = new Date(timestamp)
   const month = _d.getUTCMonth() + 1
   const day = _d.getUTCDate()
@@ -29,4 +27,33 @@ export const timestampToDateFormat = (timestamp, isIncludedTime) => {
   return `${year}/${month}/${day}`
 }
 
-// module.exports = {numToTimeFormat, timestampToDateFormat}
+const easyReadDateFormat = _timestamp => {
+  if (!_timestamp) return ''
+
+  const timestamp = Math.floor(_timestamp / 1000)
+  const SECS_IN_MINUTE = 60
+  const SECS_IN_HOUR = 60 * 60
+  const SECS_IN_DAY = 60 * 60 * 24
+  const SECS_IN_MONTH = 60 * 60 * 24 * 2 // max 2 days
+  const nowInSec = Math.floor(Date.now() / 1000)
+  const timeAdv = nowInSec - timestamp < 0 ? '後' : '前'
+  const diff = Math.abs(nowInSec - timestamp)
+
+  if (diff < SECS_IN_MINUTE) {
+    // within one minute => xx 秒 (前 | 後)
+    return `${diff} 秒${timeAdv}`
+  } else if (diff < SECS_IN_HOUR) {
+    // within one hour => xx 分鐘 (前 | 後)
+    return `${Math.floor(diff / SECS_IN_MINUTE)} 分鐘${timeAdv}`
+  } else if (diff < SECS_IN_DAY) {
+    // within one day => xx 小時 (前 | 後)
+    return `${Math.floor(diff / SECS_IN_HOUR)} 小時${timeAdv}`
+  } else if (diff < SECS_IN_MONTH) {
+    // within one month => xx 天 (前 | 後)
+    return `${Math.floor(diff / SECS_IN_DAY)} 天${timeAdv}`
+  }
+
+  return timestampToDateFormat(_timestamp)
+}
+
+module.exports = { numToTimeFormat, timestampToDateFormat, easyReadDateFormat }

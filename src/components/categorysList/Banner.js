@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { Card, Tag } from 'antd'
+import { Card } from 'antd'
 import css from './Banner.css'
 import { Link } from '../../routes/pages'
 import { timestampToDateFormat } from '../../lib/time'
 
 const StoryCard = (story, bgImageStyle, index) => {
-  const { title, createdAt, author = {}, categorys } = story
+  const { title, createdAt, author = {} } = story
   const { name = '' } = author
 
   return (
