@@ -1,10 +1,11 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
 import { Card, Tag } from 'antd'
 import css from './Card.css'
 import { Link } from '../../routes/pages'
-import { timestampToDateFormat } from '../../lib/time'
+import { easyReadDateFormat } from '../../lib/time'
 
-const StoryCard = (story, bgImageStyle, index) => {
+const StoryCard = (story, bgImageStyle, turnOnLoading, index) => {
   const { title, createdAt, author, categorys } = story
 
   return (
@@ -27,7 +28,7 @@ const StoryCard = (story, bgImageStyle, index) => {
               </Tag>
             )
           })}
-          <div className={css.createdTime}>{timestampToDateFormat(createdAt, index === 0)}</div>
+          <div className={css.createdTime}>{easyReadDateFormat(createdAt)}</div>
         </div>
       </div>
     </div>
@@ -36,8 +37,7 @@ const StoryCard = (story, bgImageStyle, index) => {
 
 export default class App extends React.Component {
   render() {
-    const { story, height, index } = this.props
-
+    const { story, height, index, turnOnLoading } = this.props
     const { id, coverUrl } = story
 
     // const loading = story ? false : true
@@ -50,7 +50,7 @@ export default class App extends React.Component {
     return (
       <Link route={`/storys/${id}`} params={{ storyId: id }}>
         <Card
-          cover={StoryCard(story, bgImageStyle, index)}
+          cover={StoryCard(story, bgImageStyle, turnOnLoading, index)}
           bordered={false}
           hoverable
           bodyStyle={{ display: 'none' }}
