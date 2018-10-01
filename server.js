@@ -15,6 +15,9 @@ app.prepare().then(() => {
   server.get('/storys', (req, res) => {
     return app.render(req, res, '/storys', { id: req.params.id })
   })
+  server.get('/', (req, res) => {
+    return app.render(req, res, '/storys', { id: req.params.id })
+  })
   server.get('/storys/:id', (req, res) => {
     return app.render(req, res, '/storysId', { id: req.params.id })
   })
