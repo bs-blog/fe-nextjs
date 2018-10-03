@@ -9,16 +9,25 @@
   .storyCardCover {
     margin: 2px;
   }
+
+  .cardBottomContent.isShowDetail{
+    display: none;
+  }
+
+  .cardMeta{
+    bottom: 20px;
+  }
 }
 
 .storyCardWrapper {
 }
 
 .storyCardCoverOverlay {
+  bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 50%;
   position: absolute;
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgb(0, 0, 0, 0.6));
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgb(0, 0, 0, 1));
 }
 
 .cardSkeleton {
@@ -26,11 +35,11 @@
 }
 
 .cardMeta  {
-  padding: 10px;
+  padding: 15px;
   width: 100%;
   position: absolute;
   color: white;
-  bottom: 0px;
+  bottom: 10px;
 }
 
 .createdTime {
@@ -47,6 +56,7 @@
 }
 .cardTitleContent {
   margin-bottom: 10px;
+  padding-left: 6px;
 }
 .cardSubTitleContent{
   font-size: 81%;
@@ -55,4 +65,7 @@
 }
 .cardBottomContent{
   margin-top: 5px;
+}
+.clockIcon{
+  margin-right: 5px;
 }

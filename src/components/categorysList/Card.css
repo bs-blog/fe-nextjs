@@ -1,3 +1,6 @@
+@value globalCss: "../../global.css";
+@value dark-1, gray-1 from globalCss;
+
 .storyCardCover {
   background-position: top;
   background-repeat: no-repeat;
@@ -5,9 +8,11 @@
   margin-top: 2px;
 }
 .cardDescription {
+  font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 50px;
+  color: gray-1;
 }
 .authorAvatar {
   text-align: center;
@@ -18,8 +23,10 @@
   font-size: 80%;
   letter-spacing: 0.5px;
 }
-.authorNameInContent {
+.detailWrapper .authorNameInContent {
   display: none;
+  font-size: 81%;
+  line-height: 1.2;
 }
 
 @media (min-width: 576px) {
@@ -29,7 +36,7 @@
   .authorAvatar {
     display: none;
   }
-  .authorNameInContent {
+  .detailWrapper .authorNameInContent {
     display: inline-block;
   }
 }
@@ -58,23 +65,19 @@
   bottom: 0px;
 }
 
-.createdTime {
-  float: right;
+.detailWrapper{
+  color: #bdbdbd;
+  display: flex;
+  justify-content: space-between;
+}
+.detailWrapper .createdTime {
   padding-bottom: 2px;
   font-size: 68%;
   letter-spacing: 0.5px;
 }
 
-.cardTitleContent b{
-  font-size: 16px;
-  letter-spacing: 3px;
-  line-height: 25px;
-}
-.cardTitleContent {
-  margin-bottom: 10px;
-}
-.cardSubTitleContent{
-
+.cartTitle {
+  color: dark-1;
 }
 .cardBottomContent{
   margin-top: 5px;
