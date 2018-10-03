@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Card from './Card'
-import Banner from './Banner'
+import Banner from '../storysList/Card'
 import { Row, Col } from 'antd'
 
 const gridConfig = {
@@ -21,7 +21,11 @@ export default class List extends React.Component {
         <Row type="flex" justify="start">
           <Col {...gridConfig[0]}>
             {storyList[0] && (
-              <Banner story={storyList[0]} height={heightConfig[0] || heightConfig['default']} />
+              <Banner
+                story={storyList[0]}
+                height={heightConfig[0] || heightConfig['default']}
+                isDetail
+              />
             )}
           </Col>
         </Row>

@@ -15,7 +15,7 @@ export default class App extends React.Component {
         <div className={css.bannerCategory}>
           {categorys.map(({ name, id }) => {
             return (
-              <Tag key={name} color="#1f1f1f" style={{ borderRadius: '0' }}>
+              <Tag key={name} color="#1b2a4c" style={{ borderRadius: '0' }}>
                 <Link route={`/categorys/${id}`} params={{ id: id }}>
                   {name}
                 </Link>

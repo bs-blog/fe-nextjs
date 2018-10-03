@@ -16,10 +16,10 @@ const Description = story => {
   return (
     <div className={css.description}>
       <p className={css.cardDescription}>{description}</p>
-      <span className={[css.authorNameInContent, css.authorName].join(' ')}>
-        <b> {authorName}</b>
-      </span>
-      <span className={css.createdTime}>{easyReadDateFormat(createdAt)}</span>
+      <div className={css.detailWrapper}>
+        <span className={[css.authorNameInContent, css.authorName].join(' ')}>{authorName}</span>
+        <span className={css.createdTime}>{easyReadDateFormat(createdAt)}</span>
+      </div>
     </div>
   )
 }
@@ -49,7 +49,11 @@ export default class App extends React.Component {
     return (
       <Link route={`/storys/${id}`} params={{ storyId: id }}>
         <Card cover={StoryCard(bgImageStyle)}>
-          <Meta avatar={AuthorAvatar(author)} title={title} description={Description(story)} />
+          <Meta
+            avatar={AuthorAvatar(author)}
+            title={<div className={css.cartTitle}>{title}</div>}
+            description={Description(story)}
+          />
         </Card>
       </Link>
     )

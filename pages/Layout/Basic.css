@@ -5,7 +5,7 @@
 }
 
 div.grey {
-  background-color: #eee; 
+  background-color: white; 
 }
 
 .headerWrapper {
@@ -25,13 +25,13 @@ div.grey {
 
 @media screen  and (min-width: 1601px)  {
   .layoutContentWrapper {
-    width: 1280px;
+    width: 960px;
   }
 }
 
 @media screen  and (min-width: 1201px) and (max-width: 1600px) {
   .layoutContentWrapper {
-    width: 1200px;
+    width: 960px;
   }
 }
 
