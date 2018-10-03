@@ -7,7 +7,7 @@ const gridConfig = {
   1: { xs: 24, sm: 12, md: 6, lg: 8, xl: 8 },
   2: { xs: 24, sm: 12, md: 6, lg: 8, xl: 8 },
   3: { xs: 24, sm: 12, md: 6, lg: 8, xl: 8 },
-  default: { xs: 24, sm: 12, md: 6, lg: 4, xl: 4 }
+  default: { xs: 24, sm: 12, md: 6, lg: 6, xl: 6 }
 }
 
 const heightConfig = {

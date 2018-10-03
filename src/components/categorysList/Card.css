@@ -5,6 +5,7 @@
   margin-top: 2px;
 }
 .cardDescription {
+  font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 50px;
