@@ -1,6 +1,8 @@
 const express = require('express')
 const next = require('next')
 
+console.log('process.env: ', process.env)
+
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT || 3000
 
