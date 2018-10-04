@@ -3,9 +3,15 @@ import css from './Footer.css'
 import { Layout, Icon } from 'antd'
 const { Footer } = Layout
 
+const YOUTUBE_LINK = process.env.YOUTUBE_LINK || ''
+const FACEBOOK_LINK = process.env.FACEBOOK_LINK || ''
+const EMAIL_LINK = process.env.EMAIL_LINK || ''
+
+/* FIXME 跑const的時候不會拿到 window 的資料
 const YOUTUBE_LINK = process.env.YOUTUBE_LINK || window.YOUTUBE_LINK || ''
 const FACEBOOK_LINK = process.env.FACEBOOK_LINK || window.FACEBOOK_LINK || ''
 const EMAIL_LINK = process.env.EMAIL_LINK || window.EMAIL_LINK || ''
+*/
 
 export default class FooterComponent extends React.Component {
   render() {

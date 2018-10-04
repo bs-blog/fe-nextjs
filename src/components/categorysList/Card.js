@@ -48,7 +48,7 @@ export default class App extends React.Component {
 
     return (
       <Link route={`/storys/${id}`} params={{ storyId: id }}>
-        <Card cover={StoryCard(bgImageStyle)}>
+        <Card cover={StoryCard(bgImageStyle)} bodyStyle={{ padding: '12px' }}>
           <Meta
             avatar={AuthorAvatar(author)}
             title={<div className={css.cartTitle}>{title}</div>}
