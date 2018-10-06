@@ -1,7 +1,11 @@
 import * as React from 'react'
 import css from './Basic.css'
 import { Link } from '../../src/routes/pages'
-const LOGO_URL = '/static/logoBlack.jpg'
+import getConfig from 'next/config'
+const { publicRuntimeConfig } = getConfig()
+const { LOGO_URL_800H } = publicRuntimeConfig
+
+const LOGO_URL = LOGO_URL_800H || '/static/logoBlack.jpg'
 
 export default class LogoWrapper extends React.Component {
   render() {
