@@ -11,6 +11,7 @@ module.exports = {
     PRODUCT_AUTHOR: process.env.PRODUCT_AUTHOR,
     PRODUCT_NAME: process.env.PRODUCT_NAME,
     PRODUCT_HOST: process.env.PRODUCT_HOST,
-    FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID
+    FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
+    LOGO_URL_800H: process.env.LOGO_URL_800H
   }
 }

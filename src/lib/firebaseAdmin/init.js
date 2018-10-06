@@ -19,8 +19,10 @@ if (!firebaseAdmin.apps.length) {
 }
 
 const database = firebaseAdmin.database()
+const auth = firebaseAdmin.auth()
 
 module.exports = {
   database,
-  firebaseAdmin
+  firebaseAdmin,
+  auth
 }
