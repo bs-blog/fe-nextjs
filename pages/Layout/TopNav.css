@@ -6,7 +6,7 @@
 
 .topNavWarpper {
   text-align: center;
-  line-height: 40px;
+  line-height: 30px;
   font-size: 12px;
 }
 
@@ -18,7 +18,7 @@
   height: 100%;
   display: inline-block;
   margin: 0px 10px;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 .topNavItem:hover { 
   background-color: lightgray;
