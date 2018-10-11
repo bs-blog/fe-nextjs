@@ -12,7 +12,10 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <link rel="stylesheet" href="/_next/static/style.css" />
           <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/antd/3.9.2/antd.css" />
-
+          <meta
+            name="google-site-verification"
+            content="fsqPzbDl1xEecNsWQ-46h7Y0l2cmcZcdNbFY5BTB1uk"
+          />
           {/* <!-- favicon --> */}
           <link
             rel="apple-touch-icon"
