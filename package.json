@@ -32,6 +32,7 @@
   "dependencies": {
     "@zeit/next-css": "^0.2.0",
     "antd": "^3.9.1",
+    "autotrack": "^2.4.1",
     "connected-next-router": "0.0.2",
     "express": "^4.16.3",
     "firebase": "^5.4.2",
