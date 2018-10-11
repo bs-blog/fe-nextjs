@@ -14,14 +14,16 @@ export default class App extends React.Component {
     return (
       <React.Fragment>
         <Layout className={css.grey}>
-          <div className={css.headerWrapper}>
+          <div className={css.topCategoryWrapper}>
             {/* only shown in xs and s screen size */}
             <Drawer categoryList={categoryList} />
             <TopNav categoryList={categoryList} />
             <LogoWrapper />
           </div>
 
-          <Content className={css.layoutContentWrapper}>{this.props.children}</Content>
+          <Content className={`${css.rwdLayoutWidth} ${css.contentBody}`}>
+            {this.props.children}
+          </Content>
           <Footer />
         </Layout>
       </React.Fragment>

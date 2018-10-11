@@ -9,7 +9,6 @@ export default class App extends React.Component {
     return (
       <Layout>
         <Header>
-          <div className="logo" />
           <Menu
             theme="dark"
             mode="horizontal"

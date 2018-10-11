@@ -11,9 +11,11 @@ export default class LogoWrapper extends React.Component {
   render() {
     return (
       <div className={css.header}>
-        <Link route="storys">
-          <img alt={'LOGO'} src={LOGO_URL} />
-        </Link>
+        <div className={css.rwdLayoutWidth}>
+          <Link route="storys">
+            <img alt={'LOGO'} src={LOGO_URL} />
+          </Link>
+        </div>
       </div>
     )
   }
