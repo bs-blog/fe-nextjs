@@ -9,8 +9,8 @@ export default class Presentational extends React.Component {
   render() {
     const { categoryList, storyList, system = {} } = this.props
     const { currentCategory = {} } = system
-    const { name } = currentCategory
-    const breadcrumbConfig = [{ title: '分類' }, { title: name }]
+    const { name, id: categoryId } = currentCategory
+    const breadcrumbConfig = [{ title: '分類' }, { title: name, id: categoryId }]
     return (
       <BasicLayout categoryList={categoryList} key={name}>
         <DefaultHeader />
