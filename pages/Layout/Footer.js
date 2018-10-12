@@ -1,26 +1,25 @@
 import * as React from 'react'
 import css from './Footer.css'
 import { Layout, Icon } from 'antd'
+import getConfig from 'next/config'
+const { publicRuntimeConfig } = getConfig()
+const {
+  PRODUCT_NAME_ZH = '',
+  PRODUCT_DESCRIPTION = '',
+  YOUTUBE_LINK = '',
+  FACEBOOK_LINK = '',
+  EMAIL_LINK = ''
+} = publicRuntimeConfig
+
 const { Footer } = Layout
-
-const YOUTUBE_LINK = process.env.YOUTUBE_LINK || ''
-const FACEBOOK_LINK = process.env.FACEBOOK_LINK || ''
-const EMAIL_LINK = process.env.EMAIL_LINK || ''
-
-/* FIXME 跑const的時候不會拿到 window 的資料
-const YOUTUBE_LINK = process.env.YOUTUBE_LINK || window.YOUTUBE_LINK || ''
-const FACEBOOK_LINK = process.env.FACEBOOK_LINK || window.FACEBOOK_LINK || ''
-const EMAIL_LINK = process.env.EMAIL_LINK || window.EMAIL_LINK || ''
-*/
 
 export default class FooterComponent extends React.Component {
   render() {
-    // const { config } = this.props
     return (
       <Footer className={css.footerWrapper} style={{ background: 'rgba(0, 29, 29,1)' }}>
         <div className={css.contentWrapper}>
-          <span>Copyright © 2018 yakyunews. </span>
-          <span> 專業日本職棒新聞、評論、以及所有日本棒球資訊網站 </span>
+          <span>Copyright © 2018 {PRODUCT_NAME_ZH}. </span>
+          <span>{PRODUCT_DESCRIPTION} </span>
         </div>
         <div className={css.iconWrapper}>
           <a href={EMAIL_LINK}>
