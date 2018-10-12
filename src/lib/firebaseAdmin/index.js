@@ -3,6 +3,7 @@ const ClassDaoStorys = require('../dao/StoryList')
 const ClassDaoStoryId = require('../dao/StoryId')
 const ClassDaoCategorys = require('../dao/CategoryList')
 const ClassDaoAuthors = require('../dao/AuthorList')
+const ClassDaoSystem = require('../dao/System')
 
 // -=-=--=-=-= storys -=-=-=-=-=-=
 const fetchStoryList = () => {
@@ -32,9 +33,16 @@ const fetchAuthorList = () => {
   return dao.once()
 }
 
+// -=-=--=-=-= system -=-=-=-=-=-=
+const fetchSystem = () => {
+  const dao = new ClassDaoSystem(database)
+  return dao.once()
+}
+
 module.exports = {
   fetchStoryList,
   fetchStoryById,
   fetchCategoryList,
-  fetchAuthorList
+  fetchAuthorList,
+  fetchSystem
 }

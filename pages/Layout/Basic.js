@@ -10,7 +10,7 @@ const { Content } = Layout
 
 export default class App extends React.Component {
   render() {
-    const { categoryList } = this.props
+    const { categoryList, system } = this.props
     return (
       <React.Fragment>
         <Layout className={css.grey}>
@@ -24,7 +24,7 @@ export default class App extends React.Component {
           <Content className={`${css.rwdLayoutWidth} ${css.contentBody}`}>
             {this.props.children}
           </Content>
-          <Footer />
+          <Footer system={system} />
         </Layout>
       </React.Fragment>
     )

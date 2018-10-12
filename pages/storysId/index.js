@@ -18,9 +18,9 @@ Container.initRemoteData = async args => {
     fetchConfig(args),
     fetch(`${baseUrl}/api/storys/${storyId}`).then(res => res.json())
   ])
-  const [categoryList, authorList] = config
+  const [categoryList, authorList, system] = config
   const story = initStory(_story, categoryList, authorList)
-  return { story, categoryList, authorList }
+  return { story, categoryList, authorList, system }
 }
 Container.reset = args => {
   const { store } = args
@@ -30,11 +30,12 @@ Container.getInitialProps = async args => {
   Container.reset(args)
   const { store } = args
 
-  const { story, categoryList, authorList } = await Container.initRemoteData(args)
+  const { story, categoryList, authorList, system } = await Container.initRemoteData(args)
 
   store.dispatch({ type: 'SET_STORY_SINGLE', story })
   store.dispatch({ type: 'SET_CATEGORYS_LIST', categoryList })
   store.dispatch({ type: 'SET_AUTHORS_LIST', authorList })
+  store.dispatch({ type: 'SET_SYSTEM', system })
   return {}
 }
 
@@ -42,7 +43,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     story: state.storys.story,
     categoryList: state.categorys.categoryList,
-    authorList: state.authors.authorList
+    authorList: state.authors.authorList,
+    system: state.system
   }
 }
 

@@ -5,5 +5,6 @@ router.use(normalize)
 router.use('/storys', require('./storys'))
 router.use('/categorys', require('./categorys'))
 router.use('/authors', require('./authors'))
+router.use('/system', require('./system'))
 
 module.exports = router

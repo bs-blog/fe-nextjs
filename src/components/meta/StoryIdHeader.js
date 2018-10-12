@@ -1,16 +1,13 @@
 import React from 'react'
 import Head from 'next/head'
 
-import getConfig from 'next/config'
-const { publicRuntimeConfig } = getConfig()
-const { PRODUCT_NAME_ZH, PRODUCT_AUTHOR, PRODUCT_HOST = '', FACEBOOK_APP_ID } = publicRuntimeConfig
-
 const stringifyArrayObj = (list, field) => {
   return list.map(item => item[field]).join(',')
 }
 
-export default ({ storyData }) => {
+export default ({ storyData, system }) => {
   const { name, description, categorys, author, coverUrl } = storyData
+  const { productFacebookId, productHost, productNameZh, productShortName } = system
 
   const tagContentCategory = stringifyArrayObj(categorys, 'name')
   const tagContentAuthor = author.name
@@ -20,8 +17,8 @@ export default ({ storyData }) => {
       <title>{name}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={`${tagContentCategory},${tagContentAuthor},${name}`} />
-      <meta name="author" content={PRODUCT_AUTHOR || ''} />
-      <meta name="copyright" content={PRODUCT_NAME_ZH || ''} />
+      <meta name="author" content={productShortName || ''} />
+      <meta name="copyright" content={productNameZh || ''} />
 
       {/* <!-- Schema.org markup for Google+ --> */}
       <meta itemprop="name" content={name} />
@@ -30,10 +27,10 @@ export default ({ storyData }) => {
 
       {/* <!-- Twitter Card data --> */}
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content={PRODUCT_NAME_ZH} />
+      <meta name="twitter:site" content={productNameZh} />
       <meta name="twitter:title" content={name} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:creator" content={PRODUCT_AUTHOR} />
+      <meta name="twitter:creator" content={productShortName} />
       <meta name="twitter:image" content={coverUrl} />
       <meta name="twitter:data1" content="$3" />
       <meta name="twitter:label1" content="Price" />
@@ -43,12 +40,12 @@ export default ({ storyData }) => {
       {/* <!-- Open Graph data facebook --> */}
       <meta property="og:title" content={name} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={PRODUCT_HOST} />
+      <meta property="og:url" content={productHost} />
       <meta property="og:image" content={coverUrl} />
       <meta property="og:description" content={description} />
-      <meta property="og:site_name" content={PRODUCT_NAME_ZH} />
+      <meta property="og:site_name" content={productNameZh} />
       <meta property="og:locale" content="zh_TW" />
-      <meta property="fb:app_id" content={FACEBOOK_APP_ID} />
+      <meta property="fb:app_id" content={productFacebookId} />
     </Head>
   )
 }

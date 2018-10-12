@@ -8,7 +8,7 @@ export default class Presentational extends React.Component {
     const { categoryList, storyList, system } = this.props
     return (
       <BasicLayout categoryList={categoryList} system={system}>
-        <DefaultHeader />
+        <DefaultHeader system={system} />
         <List storyList={storyList} />
       </BasicLayout>
     )

@@ -7,10 +7,10 @@ import StoryBanner from '../../src/components/storysId/StoryBanner'
 
 export default class Presentational extends React.Component {
   render() {
-    const { story: storyData } = this.props
+    const { story: storyData, system } = this.props
     return (
       <div>
-        <StoryIdHeader storyData={storyData} />
+        <StoryIdHeader storyData={storyData} system={system} />
         <BasicLayout {...this.props}>
           <div className={css.storyWrapper}>
             <StoryBanner storyData={storyData} />

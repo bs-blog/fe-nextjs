@@ -1,58 +1,54 @@
 import React from 'react'
 import Head from 'next/head'
 
-import getConfig from 'next/config'
-const { publicRuntimeConfig } = getConfig()
-const {
-  PRODUCT_NAME_ZH = '',
-  PRODUCT_NAME = '',
-  PRODUCT_DESCRIPTION = '',
-  LOGO_URL_800H = '',
-  PRODUCT_AUTHOR = '',
-  PRODUCT_HOST = '',
-  FACEBOOK_APP_ID = ''
-} = publicRuntimeConfig
+export default props => {
+  const { system } = props
+  const {
+    productDescription,
+    productFacebookId,
+    productHost,
+    productLogoUrl,
+    productNameEng,
+    productNameZh,
+    productShortName
+  } = system
 
-export default () => {
-  const name = PRODUCT_NAME_ZH,
-    description = PRODUCT_DESCRIPTION
-  const keywords = `${name} ${description}`
-  const coverUrl = LOGO_URL_800H
+  const keywords = `${productNameZh} ${productNameEng} ${productDescription}`
 
   return (
     <Head>
-      <title>{name}</title>
-      <meta name="description" content={description} />
+      <title>{productNameZh}</title>
+      <meta name="description" content={productDescription} />
       <meta name="keywords" content={keywords} />
-      <meta name="author" content={PRODUCT_AUTHOR || ''} />
-      <meta name="copyright" content={PRODUCT_NAME_ZH || ''} />
+      <meta name="author" content={productShortName || ''} />
+      <meta name="copyright" content={productNameZh || ''} />
 
       {/* <!-- Schema.org markup for Google+ --> */}
-      <meta itemprop="name" content={name} />
-      <meta itemprop="description" content={description} />
-      <meta itemprop="image" content={coverUrl} />
+      <meta itemprop="name" content={productNameZh} />
+      <meta itemprop="description" content={productDescription} />
+      <meta itemprop="image" content={productLogoUrl} />
 
       {/* <!-- Twitter Card data --> */}
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content={PRODUCT_NAME} />
-      <meta name="twitter:title" content={name} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:creator" content={PRODUCT_AUTHOR} />
-      <meta name="twitter:image" content={coverUrl} />
+      <meta name="twitter:site" content={productNameZh} />
+      <meta name="twitter:title" content={productNameZh} />
+      <meta name="twitter:description" content={productDescription} />
+      <meta name="twitter:creator" content={productShortName} />
+      <meta name="twitter:image" content={productLogoUrl} />
       <meta name="twitter:data1" content="$3" />
       <meta name="twitter:label1" content="Price" />
       <meta name="twitter:data2" content="Black" />
       <meta name="twitter:label2" content="Color" />
 
       {/* <!-- Open Graph data facebook --> */}
-      <meta property="og:title" content={name} />
+      <meta property="og:title" content={productNameZh} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={PRODUCT_HOST} />
-      <meta property="og:image" content={coverUrl} />
-      <meta property="og:description" content={description} />
-      <meta property="og:site_name" content={PRODUCT_NAME} />
+      <meta property="og:url" content={productHost} />
+      <meta property="og:image" content={productLogoUrl} />
+      <meta property="og:description" content={productDescription} />
+      <meta property="og:site_name" content={productNameZh} />
       <meta property="og:locale" content="zh_TW" />
-      <meta property="fb:app_id" content={FACEBOOK_APP_ID} />
+      <meta property="fb:app_id" content={productFacebookId} />
     </Head>
   )
 }

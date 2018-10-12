@@ -16,7 +16,8 @@ export const fetchConfig = async args => {
 
   return await Promise.all([
     fetch(`${baseUrl}/api/categorys`).then(res => res.json()),
-    fetch(`${baseUrl}/api/authors`).then(res => res.json())
+    fetch(`${baseUrl}/api/authors`).then(res => res.json()),
+    fetch(`${baseUrl}/api/system`).then(res => res.json())
   ])
 }
 
