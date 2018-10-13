@@ -11,6 +11,8 @@ app.prepare().then(() => {
 
   server.use('/api', require('./src/routes/api'))
 
+  server.use('/sitemap', require('./src/routes/sitemap'))
+
   server.get('/storys', (req, res) => {
     return app.render(req, res, '/storys', { id: req.params.id })
   })

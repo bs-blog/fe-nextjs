@@ -8,12 +8,6 @@ module.exports = {
     }
   }),
   publicRuntimeConfig: {
-    PRODUCT_AUTHOR: process.env.PRODUCT_AUTHOR,
-    PRODUCT_NAME_ZH: process.env.PRODUCT_NAME_ZH,
-    PRODUCT_NAME_ENG: process.env.PRODUCT_NAME_ENG,
-    PRODUCT_DESCRIPTION: process.env.PRODUCT_DESCRIPTION,
-    PRODUCT_HOST: process.env.PRODUCT_HOST,
-    FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
     LOGO_URL_800H: process.env.LOGO_URL_800H,
     GA_ID: process.env.GA_ID
   }
