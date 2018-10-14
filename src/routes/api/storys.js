@@ -4,7 +4,7 @@ const { CACHE_MAX_AGE } = require('../../lib/constant/system')
 const memoize = require('memoizee')
 
 const cacheFetchStoryList = memoize(firebaseAdmin.fetchStoryList, { maxAge: CACHE_MAX_AGE })
-const cacheFetchStoryById = memoize(firebaseAdmin.fetchStoryById, { maxAge: 1 })
+const cacheFetchStoryById = memoize(firebaseAdmin.fetchStoryById, { maxAge: CACHE_MAX_AGE })
 
 const storySchemaPlus = ['data', 'rawContent']
 const storySchema = [

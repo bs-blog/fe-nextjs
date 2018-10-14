@@ -10,6 +10,7 @@ app.prepare().then(() => {
   const server = express()
 
   server.use('/api', require('./src/routes/api'))
+  server.use('/amp', require('./src/routes/amp'))
 
   server.use('/sitemap', require('./src/routes/sitemap'))
 
