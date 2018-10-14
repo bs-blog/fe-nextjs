@@ -37,18 +37,8 @@ router.get('/:storyId', async function(req, res) {
     cacheFetchSystem()
   ])
 
-  const { productLogoUrl, productDescription } = responseSystem
-
   const content = draftjsToHtml(JSON.parse(responseStory.data))
-  const { title } = responseStory
-  const options = {
-    title,
-    logoUrl: productLogoUrl,
-    originUrl: `/storys/${storyId}`,
-    footerInfo: productDescription
-  }
-
-  return res.send(template.storyId(content, options))
+  return res.send(template.storyId(content, responseStory, responseSystem))
 })
 
 module.exports = router

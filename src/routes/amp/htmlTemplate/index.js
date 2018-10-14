@@ -1,10 +1,15 @@
-const storyId = (html = '', { title = '', logoUrl = '', originUrl = '/', footerInfo = '' }) => {
+const storyId = (html = '', storyInfo, sysInfo) => {
+  const { title, id, coverUrl } = storyInfo
+  const originUrl = `/storys/${id}`
+  const { productLogoUrl, productDescription, productShortName } = sysInfo
+
   return `<!doctype html>
   <html amp lang="en">
     <head>
       <meta charset="utf-8">
       <title>${title}</title>
       <link rel="canonical" href="${originUrl}">
+      <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
       <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
       <script async src="https://cdn.ampproject.org/v0.js"></script>
       <style amp-custom>
@@ -59,21 +64,27 @@ const storyId = (html = '', { title = '', logoUrl = '', originUrl = '/', footerI
     </style>
     </head>
     <body>
-      <amp-story-page id="vertical-wrapper">
-        <amp-story-grid-layer template="vertical">
-          <div class='headerWrapper'>
-            <div class='headerLogoWrapper'>
-              <amp-img class='logoImage' width=200 height=52 layout="fixed" src='${logoUrl}' />
+      <amp-story standalone
+        title="${title}"
+        publisher="${productShortName}"
+        publisher-logo-src="${productLogoUrl}"
+        poster-portrait-src="${coverUrl}">
+        <amp-story-page id="vertical-wrapper">
+          <amp-story-grid-layer template="vertical">
+            <div class='headerWrapper'>
+              <div class='headerLogoWrapper'>
+                <amp-img class='logoImage' width=200 height=52 layout="fixed" src='${productLogoUrl}' />
+              </div>
             </div>
-          </div>
-          <div class='contentWrapper'>
-            ${html}
-          </div>
-          <div class='footerWrapper'>
-            ${footerInfo}
-          </div>
-        </amp-story-grid-layer>
-      </amp-story-page>
+            <div class='contentWrapper'>
+              ${html}
+            </div>
+            <div class='footerWrapper'>
+              ${productDescription}
+            </div>
+          </amp-story-grid-layer>
+        </amp-story-page>
+      </amp-story>
     </body>
   </html>`
 }
