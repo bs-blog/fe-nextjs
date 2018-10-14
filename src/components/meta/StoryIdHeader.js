@@ -6,7 +6,7 @@ const stringifyArrayObj = (list, field) => {
 }
 
 export default ({ storyData, system }) => {
-  const { name, description, categorys, author, coverUrl } = storyData
+  const { name, description, categorys, author, coverUrl, id } = storyData
   const { productFacebookId, productHost, productNameZh, productShortName } = system
 
   const tagContentCategory = stringifyArrayObj(categorys, 'name')
@@ -19,6 +19,7 @@ export default ({ storyData, system }) => {
       <meta name="keywords" content={`${tagContentCategory},${tagContentAuthor},${name}`} />
       <meta name="author" content={productShortName || ''} />
       <meta name="copyright" content={productNameZh || ''} />
+      <link rel="amphtml" href={`${productHost}/amp/storys/${id}`} />
 
       {/* <!-- Schema.org markup for Google+ --> */}
       <meta itemprop="name" content={name} />

@@ -66,7 +66,11 @@ router.get('/:storyId', async function(req, res) {
   try {
     const { storyId } = req.params
     if (!storyId) throw new Error('Given null storyId')
-    const data = await cacheFetchStoryById(storyId)
+    const data = {
+      id: storyId,
+      ...(await cacheFetchStoryById(storyId))
+    }
+
     res.json(storyModel(data, { source: ['data', 'rawContent'] }))
   } catch (err) {
     res.status(500).json(err)

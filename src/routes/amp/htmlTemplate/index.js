@@ -40,6 +40,7 @@ const storyId = (html = '', { title = '', logoUrl = '', originUrl = '/', footerI
       .contentWrapper {
         padding: 20px;
         max-width: 800px;
+        margin: auto;
       }
       .fixed-container {
         position: relative;
