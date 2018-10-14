@@ -77,6 +77,9 @@ export default class EditorComponent extends React.Component {
           .md-block-image-inner-container img {
             width: 100%;
           }
+          .md-editor-toolbar {
+            display: none;
+          }
         `}</style>
       </div>
     )
