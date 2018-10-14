@@ -1,3 +1,6 @@
+const timezone = 8
+const timezoneOffset = timezone * 60 * 60 * 1000
+
 const fillZero = num => {
   if (num < 10) return `0${num}`
   return num
@@ -15,7 +18,8 @@ const numToTimeFormat = _num => {
 }
 
 const timestampToDateFormat = (timestamp, isIncludedTime) => {
-  const _d = new Date(timestamp)
+  const _d = new Date(new Date(timestamp).valueOf() + timezoneOffset)
+
   const month = _d.getUTCMonth() + 1
   const day = _d.getUTCDate()
   const year = _d.getUTCFullYear()
