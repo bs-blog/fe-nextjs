@@ -32,13 +32,25 @@ const draftjsToHtml = raw => {
 
 router.get('/:storyId', async function(req, res) {
   const { storyId } = req.params
+  const { validate } = req.query
   const [responseStory, responseSystem] = await Promise.all([
     cacheFetchStoryById(storyId),
     cacheFetchSystem()
   ])
 
   const content = draftjsToHtml(JSON.parse(responseStory.data))
-  return res.send(template.storyId(content, responseStory, responseSystem))
+  const html = template.storyId(content, responseStory, responseSystem)
+
+  if (validate) {
+    return require('amphtml-validator')
+      .getInstance()
+      .then(function(validator) {
+        const result = validator.validateString(html)
+        return res.send(JSON.stringify(result, null, 4))
+      })
+  } else {
+    return res.send(html)
+  }
 })
 
 module.exports = router
