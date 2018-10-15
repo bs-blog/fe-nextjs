@@ -38,7 +38,7 @@ export default class EditorComponent extends React.Component {
 
   render() {
     return (
-      <div className={css.editorComponentWrapper}>
+      <article className={css.editorComponentWrapper}>
         <Editor
           onChange={() => {}}
           editorEnabled={false}
@@ -81,7 +81,7 @@ export default class EditorComponent extends React.Component {
             display: none;
           }
         `}</style>
-      </div>
+      </article>
     )
   }
 }

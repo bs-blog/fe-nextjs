@@ -16,7 +16,7 @@ export default class FooterComponent extends React.Component {
           <span>{productDescription} </span>
         </div>
         <div className={css.iconWrapper}>
-          <a href={contactEmail}>
+          <a href={'mailto:' + contactEmail}>
             <Icon type="mail" theme="outlined" className={css.icon} />
           </a>
           <a href={facebookUrl}>

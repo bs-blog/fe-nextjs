@@ -1,22 +1,24 @@
 import React from 'react'
 import Head from 'next/head'
 
-const stringifyArrayObj = (list, field) => {
-  return list.map(item => item[field]).join(',')
-}
-
 export default ({ storyData, system }) => {
-  const { name, description, categorys, author, coverUrl, id } = storyData
-  const { productFacebookId, productHost, productNameZh, productShortName } = system
+  const { name, description, categorys, author, coverUrl, id, createdAt } = storyData
+  const { productFacebookId, productHost, productNameZh, productShortName, productLogoUrl } = system
+  const createAtISOString = new Date(createdAt).toISOString()
 
-  const tagContentCategory = stringifyArrayObj(categorys, 'name')
   const tagContentAuthor = author.name
+
+  const categoryList = categorys.map(({ name }) => name)
+
+  const keywordsList = [...categoryList, tagContentAuthor, name]
+
+  const storyPageUrl = `${productHost}/storys/${id}`
 
   return (
     <Head>
       <title>{name}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={`${tagContentCategory},${tagContentAuthor},${name}`} />
+      <meta name="keywords" content={`${keywordsList.join(',')}`} />
       <meta name="author" content={productShortName || ''} />
       <meta name="copyright" content={productNameZh || ''} />
       <link rel="amphtml" href={`${productHost}/amp/storys/${id}`} />
@@ -41,12 +43,47 @@ export default ({ storyData, system }) => {
       {/* <!-- Open Graph data facebook --> */}
       <meta property="og:title" content={name} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={productHost} />
+      <meta property="og:url" content={storyPageUrl} />
       <meta property="og:image" content={coverUrl} />
+      <meta property="og:image:alt" content={description} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={productNameZh} />
       <meta property="og:locale" content="zh_TW" />
       <meta property="fb:app_id" content={productFacebookId} />
+      <meta property="article:author" content={productHost} />
+      <meta property="article:section" content="國際新聞" />
+      <meta property="article:tag" content={keywordsList} />
+
+      {/* <!-- Google SEO --> */}
+      <script type="application/ld+json">
+        {`{
+          "@context": "http://schema.org",
+          "@type": "NewsArticle",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "${storyPageUrl}"
+          },
+          "headline": "${name}",
+          "image": [
+            "${coverUrl}"
+          ],
+          "datePublished": "${createAtISOString}",
+          "dateModified": "${createAtISOString}",
+          "author": {
+            "@type": "Person",
+            "name": "${tagContentAuthor}"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "${productShortName}",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "${productLogoUrl}"
+            }
+          },
+          "description": "${description}"
+        }`}
+      </script>
     </Head>
   )
 }
