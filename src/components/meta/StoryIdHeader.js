@@ -51,7 +51,7 @@ export default ({ storyData, system }) => {
       <meta property="og:locale" content="zh_TW" />
       <meta property="fb:app_id" content={productFacebookId} />
       <meta property="article:author" content={productHost} />
-      <meta property="article:section" content="國際新聞" />
+      <meta property="article:section" content={categoryList[0]} />
       <meta property="article:tag" content={keywordsList} />
 
       {/* <!-- Google SEO --> */}

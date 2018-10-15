@@ -49,6 +49,25 @@ export default props => {
       <meta property="og:site_name" content={productNameZh} />
       <meta property="og:locale" content="zh_TW" />
       <meta property="fb:app_id" content={productFacebookId} />
+
+      {/* <!-- Google SEO --> */}
+      <script type="application/ld+json">
+        {`
+        { 
+          "@context": "http://schema.org", 
+          "@type": "WebSite", 
+          "url": "${productHost}", 
+          "name": "${productNameZh}",
+          "author": {
+              "@type": "Person",
+              "name": "${productShortName}"
+            },
+          "description": "${productDescription}",
+          "publisher": "${productShortName}",
+          "image": "${productLogoUrl}"
+        }
+      `}
+      </script>
     </Head>
   )
 }
