@@ -1,10 +1,5 @@
 const router = require('express').Router()
-const firebaseAdmin = require('../../lib/firebaseAdmin')
-const { CACHE_MAX_AGE } = require('../../lib/constant/system')
-const memoize = require('memoizee')
-
-const cacheFetchStoryList = memoize(firebaseAdmin.fetchStoryList, { maxAge: CACHE_MAX_AGE })
-const cacheFetchStoryById = memoize(firebaseAdmin.fetchStoryById, { maxAge: CACHE_MAX_AGE })
+const { cacheFetchStoryList, cacheFetchStoryById } = require('./memoize')
 
 const storySchemaPlus = ['data', 'rawContent']
 const storySchema = [

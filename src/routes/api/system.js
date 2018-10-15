@@ -1,8 +1,6 @@
 const router = require('express').Router()
-const firebaseAdmin = require('../../lib/firebaseAdmin')
-const { CACHE_MAX_AGE } = require('../../lib/constant/system')
-const memoize = require('memoizee')
-const cacheFetchSystem = memoize(firebaseAdmin.fetchSystem, { maxAge: CACHE_MAX_AGE })
+const memoize = require('./memoize')
+const { cacheFetchSystem } = require('./memoize')
 
 router.get('/', async function(req, res) {
   try {
@@ -11,6 +9,11 @@ router.get('/', async function(req, res) {
   } catch (err) {
     res.status(500).json(err)
   }
+})
+
+router.get('/reset', (req, res) => {
+  memoize.reset()
+  res.json({})
 })
 
 module.exports = router

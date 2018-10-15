@@ -1,8 +1,5 @@
 const router = require('express').Router()
-const firebaseAdmin = require('../../lib/firebaseAdmin')
-const { CACHE_MAX_AGE } = require('../../lib/constant/system')
-const memoize = require('memoizee')
-const cacheFetchAuthorList = memoize(firebaseAdmin.fetchAuthorList, { maxAge: CACHE_MAX_AGE })
+const { cacheFetchAuthorList } = require('./memoize')
 
 router.get('/', async function(req, res) {
   try {
