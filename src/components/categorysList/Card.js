@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { Card, Avatar } from 'antd'
+import { Card, Avatar, Icon } from 'antd'
 import css from './Card.css'
+import storyListCardCss from '../storysList/Card.css'
 import { Link } from '../../routes/pages'
 import { easyReadDateFormat } from '../../lib/time'
 const { Meta } = Card
@@ -15,10 +16,15 @@ const Description = story => {
 
   return (
     <div className={css.description}>
-      <p className={css.cardDescription}>{description}</p>
+      <div>
+        <p className={css.cardDescription}>{description}</p>
+      </div>
       <div className={css.detailWrapper}>
         <span className={[css.authorNameInContent, css.authorName].join(' ')}>{authorName}</span>
-        <span className={css.createdTime}>{easyReadDateFormat(createdAt)}</span>
+        <span className={css.createdTime}>
+          <Icon type="clock-circle" theme="outlined" className={storyListCardCss.clockIcon} />
+          {easyReadDateFormat(createdAt)}
+        </span>
       </div>
     </div>
   )
@@ -46,9 +52,13 @@ export default class App extends React.Component {
       minHeight: imgHeight
     }
 
+    const bodyStyle = {
+      padding: '15px 15px 40px 15px'
+    }
+
     return (
       <Link route={`/storys/${id}`} params={{ storyId: id }}>
-        <Card cover={StoryCard(bgImageStyle)} bodyStyle={{ padding: '12px' }}>
+        <Card cover={StoryCard(bgImageStyle)} bodyStyle={bodyStyle}>
           <Meta
             avatar={AuthorAvatar(author)}
             title={<div className={css.cartTitle}>{title}</div>}

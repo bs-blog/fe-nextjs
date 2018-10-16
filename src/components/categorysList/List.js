@@ -25,6 +25,7 @@ export default class List extends React.Component {
                 story={storyList[0]}
                 height={heightConfig[0] || heightConfig['default']}
                 isDetail
+                isH1
               />
             )}
           </Col>

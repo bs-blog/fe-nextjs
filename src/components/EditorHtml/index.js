@@ -47,10 +47,17 @@ export default class EditorComponent extends React.Component {
         />
 
         <style jsx global>{`
-          .DraftEditor-editorContainer h3 {
+          .DraftEditor-editorContainer h2 {
             font-size: 30px;
             line-height: 1.15;
             font-weight: 600;
+            margin-top: 20px;
+          }
+          .DraftEditor-editorContainer h3 {
+            font-size: 20px;
+            line-height: 1.15;
+            font-weight: 600;
+            margin-top: 30px;
           }
           .DraftEditor-editorContainer blockquote {
             margin-top: 36px;

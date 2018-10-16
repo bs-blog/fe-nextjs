@@ -27,6 +27,7 @@ export default class List extends React.Component {
           {storyList.map((item, index) => {
             const config = gridConfig[index] || gridConfig['default']
             const isDetail = index <= 3
+
             return (
               <Col {...config} key={index}>
                 <Card
@@ -34,6 +35,7 @@ export default class List extends React.Component {
                   index={index}
                   height={heightConfig[index] || heightConfig['default']}
                   isDetail={isDetail}
+                  isH1={index === 0}
                 />
               </Col>
             )

@@ -78,10 +78,10 @@
 
 .cartTitle {
   color: dark-1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
 }
 .cardBottomContent{
   margin-top: 5px;
-}
-
-.description{
 }
