@@ -15,7 +15,8 @@
     "test": "echo fake test",
     "deploy": "npm run build ; gh-pages -d build",
     "heroku-postbuild": "npm run build",
-    "kill:3000": "pkill -15 -f -o bin/nodemon;kill $(lsof -i:3000 -sTCP:LISTEN -t);echo All mockServer should be killed"
+    "kill:3000": "pkill -15 -f -o bin/nodemon;kill $(lsof -i:3000 -sTCP:LISTEN -t);echo All mockServer should be killed",
+    "test:e2e": "npm run kill:3000; codeceptjs run --reporter mochawesome --steps"
   },
   "repository": {
     "type": "git",
@@ -65,10 +66,15 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "nodemon": "^1.18.4",
+    "codeceptjs": "^1.3.3",
+    "mochawesome": "^3.0.2",
+    "webdriverio": "^4.13.2",
+    "nightmare": "^3.0.1",
+    "nightmare-upload": "^0.1.1",
     "prettier": "^1.14.2"
   },
   "lint-staged": {
-    "**/*.{js,jsx}": [
+    "src/**/*.{js,jsx}": [
       "npm run prettier",
       "npm run lint-fix",
       "git add"
