@@ -41,10 +41,13 @@ export default ({ storyData, system }) => {
       <meta name="twitter:label2" content="Color" />
 
       {/* <!-- Open Graph data facebook --> */}
+      {/* <!-- Open Graph data facebook --> */}
       <meta property="og:title" content={name} />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={storyPageUrl} />
+      <meta property="og:type" content="article" />
       <meta property="og:image" content={coverUrl} />
+      <meta property="og:image:width" content="1100" />
+      <meta property="og:image:height" content="619" />
+      <meta property="og:url" content={storyPageUrl} />
       <meta property="og:image:alt" content={description} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={productNameZh} />
