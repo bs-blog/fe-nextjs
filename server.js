@@ -13,6 +13,7 @@ app.prepare().then(() => {
   server.use('/amp', require('./src/routes/amp'))
 
   server.use('/sitemap', require('./src/routes/sitemap'))
+  server.use('/article.xml', require('./src/routes/rss'))
 
   server.get('/storys', (req, res) => {
     return app.render(req, res, '/storys', { id: req.params.id })
