@@ -1,13 +1,18 @@
-const { cacheFetchStoryList, cacheFetchCategoryList } = require('./api/memoize')
+const {
+  cacheFetchStoryList,
+  cacheFetchCategoryList,
+  cacheFetchAuthorList
+} = require('./api/memoize')
 const { rss } = require('../lib/rss')
 const router = require('express').Router()
 router.get('/', async function(req, res) {
-  const [categoryList, storyList] = await Promise.all([
+  const [categoryList, storyList, authorList] = await Promise.all([
     cacheFetchCategoryList(),
-    cacheFetchStoryList()
+    cacheFetchStoryList(),
+    cacheFetchAuthorList()
   ])
 
-  const rssXml = rss(storyList)
+  const rssXml = rss({ storyList, categoryList, authorList })
 
   res.header('Content-Type', 'application/xml')
   return res.send(rssXml)
