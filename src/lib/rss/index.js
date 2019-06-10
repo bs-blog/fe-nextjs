@@ -29,6 +29,7 @@ const rss = ({ storyList = [], categoryList = [], authorList = [] }) => {
       ...item,
       category: (targetCat && targetCat.name) || '',
       author: (targetAuthor && targetAuthor.name) || '',
+      endYmdtUnix: item.createdAt + 600 * 86400000, // disappear in 600days
       endAt
     }
   })
