@@ -16,7 +16,7 @@ const searchById = (targetId, targetList) => {
   return targetItem || {}
 }
 
-const rss = ({ storyList = [], categoryList = [], authorList = [] }) => {
+const rss = ({ storyList = [], categoryList = [], authorList = [], domain = '' }) => {
   const rootTeamplate = fs.readFileSync(`${__dirname}/root.mustache`, 'utf8')
   const _storyList = storyList.map(item => {
     const endAt = item.createdAt + 7 * 86400000 // 7days
@@ -25,12 +25,16 @@ const rss = ({ storyList = [], categoryList = [], authorList = [] }) => {
 
     const authorId = (item.author && item.author.id) || ''
     const targetAuthor = searchById(authorId, authorList)
+
+    const sourceUrl = `${domain}/storys/${item.id}`
+
     return {
       ...item,
       category: (targetCat && targetCat.name) || '',
       author: (targetAuthor && targetAuthor.name) || '',
       endYmdtUnix: item.createdAt + 600 * 86400000, // disappear in 600days
-      endAt
+      endAt,
+      sourceUrl
     }
   })
 
